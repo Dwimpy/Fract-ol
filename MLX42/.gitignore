@@ -50,4 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Misc
+main.c
+temp/
+.vscode/
+lib/glfw/
 .DS_Store
+
+# Special shader files
+mlx_*_shader.c
