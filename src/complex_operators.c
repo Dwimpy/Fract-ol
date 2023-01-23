@@ -6,18 +6,20 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 19:38:33 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/22 20:24:55 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/23 20:06:20 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/complex.h"
 
-double	norm(t_complex z)
+double	mangnitude(t_complex *z)
 {
-	double	result;
+	return (sqrt(z->real * z->real + z->imag * z->imag));
+}
 
-	result = sqrt(pow(z.real, 2) + pow(z.imag, 2));
-	return (result);
+double	mag_squared(t_complex *z)
+{
+	return (z->real * z->real + z->imag * z->imag);
 }
 
 t_complex	conjugate(t_complex z)
@@ -29,23 +31,20 @@ t_complex	conjugate(t_complex z)
 	return (result);
 }
 
-t_complex	square(t_complex z)
+void	square(t_complex *z)
 {
-	t_complex	result;
-
-	result.real = pow(z.real, 2) - pow(z.imag, 2);
-	result.imag = 2 * z.real * z.imag;
-	return (result);
+	multiply(z, z->real, z->imag);
 }
 
-t_complex	inverse(t_complex z)
-{
-	t_complex	result;
-	t_complex	z_cc;
-	t_complex	denominator;
+// t_complex	inverse(t_complex z)
+// {
+// 	t_complex	result;
+// 	t_complex	z_cc;
+// 	t_complex	denominator;
 
-	z_cc = conjugate(z);
-	denominator = multiply(z, z_cc);
-	result = division(z_cc, denominator);
-	return (result);
-}
+// 	z_cc = conjugate(z);
+// 	denominator.real = (z.real * z_cc.real - z.imag * z_cc.imag);
+// 	denominator.imag = (z.real * z_cc.imag + z.imag * z_cc.real);
+// 	result = division(z_cc, denominator);
+// 	return (result);
+// }

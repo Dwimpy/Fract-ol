@@ -6,7 +6,7 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 14:38:01 by arobu             #+#    #+#              #
-#    Updated: 2023/01/22 19:43:00 by arobu            ###   ########.fr        #
+#    Updated: 2023/01/23 19:30:50 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MAIN_FILE		= main.c
 # Compiler
 
 CC			= gcc
-CFLAGS		= -g3 #-Wall -Werror -Wextra -g3 #-fsanitize=address 
+CFLAGS		= #-g3 -Wall -Werror -Wextra -g3 #-fsanitize=address 
 LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ~/.brew/opt/glfw/lib/ -lglfw -lm
 #Archive and Remove
 
@@ -49,7 +49,7 @@ OBJS	= 	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 all:	libft	$(NAME)
 
 $(NAME): $(OBJS) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) $(LDLFLAGS) $(OBJS) $(MAIN_FILE) -o $@ 
+	$(CC) $(CFLAGS) $(INCLUDE) $(LDLFLAGS) $(OBJS) $(MAIN_FILE) -o $@
 	@echo "$(YELLOW)Fractol$(DEF_COLOR) $(CYAN)built successfully.$(DEF_COLOR)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)

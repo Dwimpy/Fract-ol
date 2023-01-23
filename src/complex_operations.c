@@ -6,19 +6,17 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:18:12 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/22 21:02:05 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/23 20:07:45 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/complex.h"
 
-t_complex	add(t_complex z1, t_complex z2)
+t_complex	*add(t_complex *z1, double real, double imag)
 {
-	t_complex	result;
-
-	result.real = z1.real + z2.real;
-	result.imag = z1.imag + z2.imag;
-	return (result);
+	z1->real += real;
+	z1->imag += imag;
+	return (z1);
 }
 
 t_complex	subtract(t_complex z1, t_complex z2)
@@ -39,26 +37,26 @@ t_complex	s_multiply(double scalar, t_complex z)
 	return (result);
 }
 
-t_complex	multiply(t_complex z1, t_complex z2)
+void	multiply(t_complex *z1, double real, double imag)
 {
-	t_complex	result;
+	double real_z;
 
-	result.real = z1.real * z2.real - z1.imag * z2.imag;
-	result.imag = z1.real * z2.imag + z2.real * z1.imag;
-	return (result);
+	real_z = z1->real;
+	z1->real = z1->real * real - z1->imag * imag;
+	z1->imag = real_z * imag + real * z1->imag;
 }
 
-t_complex	division(t_complex z1, t_complex z2)
-{
-	t_complex	result;
-	t_complex	z2_cc;
-	t_complex	numerator;
-	t_complex	denominator;
+// t_complex	division(t_complex z1, t_complex z2)
+// {
+// 	t_complex	result;
+// 	t_complex	z2_cc;
+// 	t_complex	numerator;
+// 	t_complex	denominator;
 
-	z2_cc = conjugate(z2);
-	numerator = multiply(z1, z2_cc);
-	denominator = multiply(z2, z2_cc);
-	result.real = numerator.real / denominator.real;
-	result.imag = numerator.imag / denominator.real;
-	return (result);
-}
+// 	z2_cc = conjugate(z2);
+// 	numerator = multiply(&z1, &z2_cc);
+// 	denominator = multiply(&z2, &z2_cc);
+// 	result.real = numerator.real / denominator.real;
+// 	result.imag = numerator.imag / denominator.real;
+// 	return (result);
+// }
