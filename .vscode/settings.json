@@ -2,6 +2,8 @@
 	"files.associations": {
 		"__locale": "c",
 		"complex": "c",
-		"complex.h": "c"
+		"complex.h": "c",
+		"math.h": "c",
+		"fractol.h": "c"
 	}
 }

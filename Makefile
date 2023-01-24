@@ -6,7 +6,7 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 14:38:01 by arobu             #+#    #+#              #
-#    Updated: 2023/01/24 01:35:54 by arobu            ###   ########.fr        #
+#    Updated: 2023/01/24 19:05:28 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ MAIN_FILE		= main.c
 
 CC			= gcc
 CFLAGS		= #-g3 -Wall -Werror -Wextra -g3 #-fsanitize=address 
-#LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ~/.brew/opt/glfw/lib/ -lglfw -lm
-LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/ -ldl -lglfw -pthread
+LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ~/.brew/opt/glfw/lib/ -lglfw -lm
+#LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/ -ldl -lglfw -pthread
 #Archive and Remove
 
 RM			= rm -f
@@ -50,7 +50,7 @@ OBJS	= 	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 all:	libft	$(NAME)
 
 $(NAME): $(OBJS) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) $(LDLFLAGS) $(OBJS) $(MAIN_FILE) -o $@ -lm
+	@$(CC) $(CFLAGS) $(INCLUDE) $(LDLFLAGS) $(OBJS) $(MAIN_FILE) -o $@ -lm
 	@echo "$(YELLOW)Fractol$(DEF_COLOR) $(CYAN)built successfully.$(DEF_COLOR)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)

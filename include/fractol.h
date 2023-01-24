@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grid_functionality.c                               :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 13:33:34 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/24 16:20:28 by arobu            ###   ########.fr       */
+/*   Created: 2023/01/24 16:20:40 by arobu             #+#    #+#             */
+/*   Updated: 2023/01/24 17:50:31 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/grid.h"
+#ifndef FRACTOL_H
+# define FRACTOL_H
+# include "../libft/include/ft_printf.h"
+# include "complex.h"
+# include "grid.h"
+# include "window.h"
 
-t_grid	create_grid(int row, int cols)
-{
-	t_grid	grid;
-}
+void	fractol(void);
+
+#endif
