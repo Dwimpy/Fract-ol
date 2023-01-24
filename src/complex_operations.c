@@ -6,35 +6,28 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:18:12 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/23 20:07:45 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/24 00:25:37 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/complex.h"
 
-t_complex	*add(t_complex *z1, double real, double imag)
+void	add(t_complex *z1, double real, double imag)
 {
 	z1->real += real;
 	z1->imag += imag;
-	return (z1);
 }
 
-t_complex	subtract(t_complex z1, t_complex z2)
+void	subtract(t_complex *z1, double real, double imag)
 {
-	t_complex	result;
-
-	result.real = z1.real - z2.real;
-	result.imag = z1.imag - z2.imag;
-	return (result);
+	z1->real -= real;
+	z1->imag -= imag;
 }
 
-t_complex	s_multiply(double scalar, t_complex z)
+void	s_multiply(t_complex *z, double scalar)
 {
-	t_complex	result;
-
-	result.real *= scalar;
-	result.imag *= scalar;
-	return (result);
+	z->real *= scalar;
+	z->imag *= scalar;
 }
 
 void	multiply(t_complex *z1, double real, double imag)
@@ -46,17 +39,16 @@ void	multiply(t_complex *z1, double real, double imag)
 	z1->imag = real_z * imag + real * z1->imag;
 }
 
-// t_complex	division(t_complex z1, t_complex z2)
-// {
-// 	t_complex	result;
-// 	t_complex	z2_cc;
-// 	t_complex	numerator;
-// 	t_complex	denominator;
+void	division(t_complex *z1, double real, double imag)
+{
+	double		norm_squared;
+	t_complex	z_cc;
 
-// 	z2_cc = conjugate(z2);
-// 	numerator = multiply(&z1, &z2_cc);
-// 	denominator = multiply(&z2, &z2_cc);
-// 	result.real = numerator.real / denominator.real;
-// 	result.imag = numerator.imag / denominator.real;
-// 	return (result);
-// }
+	z_cc = conjugate(real, imag);
+	norm_squared = mag_squared(z_cc.real, z_cc.imag);
+	multiply(z1, z_cc.real, z_cc.imag);
+	print_complex_operation(z_cc, "Conjugate");
+	print_complex_operation(*z1, "Z1");
+	z1->real /= norm_squared;
+	z1->imag /= norm_squared;
+}

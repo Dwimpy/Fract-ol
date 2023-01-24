@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:05:37 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/23 20:07:50 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/24 00:26:05 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,20 @@ typedef struct s_complex
 ######################################
 */
 
-t_complex	*add(t_complex *z1, double real, double imag);
-t_complex	subtract(t_complex z1, t_complex z2);
-t_complex	s_multiply(double scalar, t_complex z);
-t_complex	division(t_complex z1, t_complex z2);
+void		set_complex(t_complex *z, double real, double imag);
+void		add(t_complex *z1, double real, double imag);
+void		subtract(t_complex *z1, double real, double imag);
+void		s_multiply(t_complex *z, double scalar);
+void		division(t_complex *z1, double real, double imag);
 void		multiply(t_complex *z1, double real, double imag);
-
 void		square(t_complex *z);
-t_complex	conjugate(t_complex z);
-t_complex	inverse(t_complex z);
-double		mangnitude(t_complex *z);
-double		mag_squared(t_complex *z);
+
+double		mag_squared(double real, double imag);
+double		mag_squared(double real, double imag);
+
+t_complex	inverse(double real, double imag);
+t_complex	conjugate(double real, double imag);
+
 
 /*
 ######################################
