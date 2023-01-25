@@ -4,6 +4,7 @@
 		"complex": "c",
 		"complex.h": "c",
 		"math.h": "c",
-		"fractol.h": "c"
+		"fractol.h": "c",
+		"libft.h": "c"
 	}
 }

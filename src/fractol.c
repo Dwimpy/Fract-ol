@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:21:10 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/24 22:13:27 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/25 20:36:46 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	fractol(void)
 {
-	t_window	window;
-	mlx_image_t	*new_image;
+	t_renderer	renderer;
 
-	window = create_window(1024, 1024, "Fract-ol", BLACK);
-	window_loop(&window);
+	render_window(&renderer, BG_BLACK);
+	rendering_loop(&renderer);
 }
