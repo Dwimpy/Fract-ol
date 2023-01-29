@@ -6,17 +6,18 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:18:51 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/28 18:46:11 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:37:44 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractals.h"
 
-t_fractal_node	*create_fractal(t_fractal_name name)
+t_fractal_node	*create_fractal(t_window *window, t_fractal_name name)
 {
 	t_fractal_node	*new_fractal;
 
-	initialize_fractal(&new_fractal, name);
+	new_fractal = NULL;
+	initialize_fractal(&new_fractal, window, name);
 	new_fractal->image = NULL;
 	new_fractal->next = NULL;
 	new_fractal->prev = NULL;
@@ -24,21 +25,26 @@ t_fractal_node	*create_fractal(t_fractal_name name)
 	return (new_fractal);
 }
 
-void	initialize_fractal(t_fractal_node **fractal, t_fractal_name name)
+void	initialize_fractal(t_fractal_node **fractal, \
+								t_window *window, \
+									t_fractal_name name)
 {
-	(*fractal) = (t_fractal_node *)malloc(sizeof(t_fractal_node));
+	if ((*fractal) == NULL)
+		(*fractal) = (t_fractal_node *)malloc(sizeof(t_fractal_node));
 	if (name == MANDELBROT)
-		initialize_mandelbrot(fractal);
+		initialize_mandelbrot(fractal, window);
 }
 
-void	initialize_mandelbrot(t_fractal_node **fractal)
+void	initialize_mandelbrot(t_fractal_node **fractal, t_window *window)
 {
 	t_viewport	*viewport;
 
 	viewport = &(*fractal)->viewport;
-	set_pixel_size(viewport, 0.001);
+	set_pixel_size(viewport, 0.0002);
 	set_viewport_centers(viewport, -1.4, 0);
-	set_viewport_size(viewport, W_WIDTH, W_HEIGHT);
+	set_viewport_size(viewport, \
+						window->settings.width, \
+							window->settings.height);
 	set_viewport_boundary(viewport);
 }
 

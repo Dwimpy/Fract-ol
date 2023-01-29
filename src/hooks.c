@@ -6,35 +6,39 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 02:13:28 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 15:01:03 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:44:36 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/data.h"
 
-void	*key_hooks(mlx_key_data_t keydata, t_program *data)
+void	key_hooks(mlx_key_data_t keydata, t_program *data)
 {
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(data->renderer.mlx);
 	if (mlx_is_key_down(data->renderer.mlx, MLX_KEY_A) == true)
-		ft_printf("WTF");
+	{
+		set_viewport_boundary(&data->fractals->front->viewport);
+	}
 }
 
-void	*resize_hooks(int32_t new_width, int32_t new_height, t_program *data)
+void	resize_hooks(int32_t new_width, int32_t new_height, t_program *data)
 {
+	t_screen_left	screen_left;
+	t_corners		corners;
 
+	screen_left = data->window.screen_coords;
+	corners = data->window.corners;
 	resize_window(&data->window, new_width, new_height);
 	set_corners(&data->window, data->renderer.mlx, &mlx_get_window_pos);
-	
-	ft_printf("Top Left: [%d, %d]\t", data->window.corners.top_left.x, data->window.corners.top_left.y);
-	ft_printf("Top Right: [%d, %d]\t", data->window.corners.top_right.x, data->window.corners.top_right.y);
-	ft_printf("Bottom Right: [%d, %d]\t", data->window.corners.bottom_right.x, data->window.corners.bottom_right.y);
-	ft_printf("Bottom Left: [%d, %d]\n", data->window.corners.bottom_left.x, data->window.corners.bottom_left.y);
 	mlx_resize_image(data->fractals->front->image, \
 						data->window.settings.width, \
 							data->window.settings.height);
+	set_viewport_size(&data->fractals->front->viewport, \
+						(*data).window.settings.width, \
+							(*data).window.settings.height);
+	set_viewport_boundary(&data->fractals->front->viewport);
 	render_fractal_viewport(&data->renderer, \
 								data->fractals->front, \
 									(data->window), MANDELBROT);
-	
 }

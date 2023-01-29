@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 17:25:46 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 15:00:29 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:48:55 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void	set_window_settings(t_window *window, int resizeable)
 
 void	set_corners(t_window *window, \
 						mlx_t *context, \
-							void (*f)(mlx_t *, int32_t *, int32_t *))
+							void (*win_pos)(mlx_t *, int32_t *, int32_t *))
 {
-	f(context, &window->corners.top_left.x, &window->corners.top_left.y);
-	window->corners.top_left.x = 0;
-	window->corners.top_left.y = 0;
-	window->corners.top_left.orientation = TOP_LEFT;
+	win_pos(context, \
+		&window->screen_coords.screen_x, \
+			&window->screen_coords.screen_y);
+	window->corners.top_left = set_corner(0, 0, TOP_LEFT);
 	window->corners.top_right = set_corner(window->corners.top_left.x + \
 												window->settings.width, \
 												window->corners.top_left.y, \

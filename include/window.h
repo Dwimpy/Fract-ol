@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 17:05:36 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 12:09:59 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:28:33 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define WINDOW_H
 # define DEFAULT_RESIZE_OPTION 1
 # define W_WIDTH 1280
-# define W_HEIGHT 720
+# define W_HEIGHT 760
 # define W_TITLE "Fract-ol"
 # define W_RESIZEABLE 1
 # define UP 0x1
@@ -47,6 +47,12 @@ typedef struct s_corners
 	t_w_corner	bottom_left;
 }				t_corners;
 
+typedef struct s_screen_left
+{
+	int32_t		screen_x;
+	int32_t		screen_y;
+}				t_screen_left;
+
 typedef struct s_window_settings
 {
 	int32_t		width;
@@ -64,6 +70,7 @@ typedef struct s_window
 	unsigned int		resize_flags;
 	t_window_settings	settings;
 	t_corners			corners;
+	t_screen_left		screen_coords;
 }						t_window;
 
 t_window	create_window(char *title, int isresizeable);

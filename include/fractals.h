@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/28 14:18:38 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:37:50 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ typedef struct s_fractals
 t_fractals		*create_fractal_stack(void);
 int				is_stack_empty(t_fractals *fractals);
 void			add_new_fractal(t_fractals **fractals, \
-									t_fractal_name name);
+									t_window *window, \
+										t_fractal_name name);
 t_iteration		distance_estimation(double pixel_size, \
 										t_complex *z, \
 											t_complex *c);
@@ -89,10 +90,11 @@ t_iteration		distance_estimation(double pixel_size, \
 ######################################
 */
 
-t_fractal_node	*create_fractal(t_fractal_name name);
+t_fractal_node	*create_fractal(t_window *window, t_fractal_name name);
 void			initialize_fractal(t_fractal_node **fractal, \
-										t_fractal_name name);
-void			initialize_mandelbrot(t_fractal_node **fractal);
+										t_window *window, \
+											t_fractal_name name);
+void			initialize_mandelbrot(t_fractal_node **fractal, t_window *window);
 bool			has_image(t_fractal_node *fractal);
 
 #endif
