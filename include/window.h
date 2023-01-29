@@ -6,34 +6,74 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 17:05:36 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/25 20:35:13 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 12:09:59 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_H
 # define WINDOW_H
 # define DEFAULT_RESIZE_OPTION 1
-# define W_WIDTH 1024
-# define W_HEIGHT 1024
+# define W_WIDTH 1280
+# define W_HEIGHT 720
 # define W_TITLE "Fract-ol"
 # define W_RESIZEABLE 1
-# define BG_BLACK 0
-# define BG_WHITE 255
-typedef enum e_bg_color
+# define UP 0x1
+# define RIGHT 0x2
+# define DOWN 0x4
+# define LEFT 0x8
+
+# include "../MLX42/include/MLX42/MLX42.h"
+
+typedef enum e_orientation
 {
-	BLACK = 0,
-	WHITE = 255
-}			t_bg_color;
+	TOP_LEFT,
+	TOP_RIGHT,
+	BOTTOM_RIGHT,
+	BOTTOM_LEFT,
+}			t_orientation;
+
+typedef struct s_w_corner
+{
+	int32_t			x;
+	int32_t			y;
+	t_orientation	orientation;
+}				t_w_corner;
+
+typedef struct s_corners
+{
+	t_w_corner	top_left;
+	t_w_corner	top_right;
+	t_w_corner	bottom_right;
+	t_w_corner	bottom_left;
+}				t_corners;
+
+typedef struct s_window_settings
+{
+	int32_t		width;
+	int32_t		height;
+	int			is_resizeable;
+	int			min_width;
+	int			min_height;
+	int			max_width;
+	int			max_height;
+}				t_window_settings;
 
 typedef struct s_window
 {
-	int			width;
-	int			height;
-	char		*title;
-	int			is_resizeable;
-	t_bg_color	bg_color;
-}				t_window;
+	char				*title;
+	unsigned int		resize_flags;
+	t_window_settings	settings;
+	t_corners			corners;
+}						t_window;
 
-t_window	create_window(int width, int height, char *title, int isresizeable);
-int			set_window_background(t_bg_color bg_color);
+t_window	create_window(char *title, int isresizeable);
+void		resize_window(t_window *window, \
+							int32_t new_width, \
+								int32_t new_height);
+void		set_corners(t_window *window, \
+							mlx_t *context, \
+								void (*f)(mlx_t *, int32_t *, int32_t *));
+void		set_window_settings(t_window *window, int resizeable);
+t_w_corner	set_corner(int32_t x, int32_t y, t_orientation orientation);
+
 #endif

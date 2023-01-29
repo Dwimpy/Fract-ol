@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   ft_abs_double.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 16:20:40 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 02:02:19 by arobu            ###   ########.fr       */
+/*   Created: 2023/01/26 18:05:35 by arobu             #+#    #+#             */
+/*   Updated: 2023/01/26 18:07:16 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
-
-# include "complex.h"
-# include "renderer.h"
-# include "data.h"
-
-void	fractol(void);
-
-#endif
+double	ft_abs_double(double value)
+{
+	if (value < 0)
+		return (-value);
+	else
+		return (value);
+}

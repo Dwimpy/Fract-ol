@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:05:37 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/24 00:26:05 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/27 14:46:42 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		division(t_complex *z1, double real, double imag);
 void		multiply(t_complex *z1, double real, double imag);
 void		square(t_complex *z);
 
-double		mag_squared(double real, double imag);
+double		mangnitude(double real, double imag);
 double		mag_squared(double real, double imag);
 
 t_complex	inverse(double real, double imag);

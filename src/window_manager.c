@@ -6,28 +6,66 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 17:25:46 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/25 20:35:04 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 13:48:08 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/window.h"
 
-t_window	create_window(int width, int height, \
-							char *title, int resizeable)
+t_window	create_window(char *title, int resizeable)
 {
 	t_window	window;
 
-	window.width = width;
-	window.height = height;
 	window.title = title;
-	window.is_resizeable = resizeable;
+	window.resize_flags = 0;
+	set_window_settings(&window, resizeable);
 	return (window);
 }
 
-int	set_window_background(t_bg_color bg_color)
+void	resize_window(t_window *window, int32_t new_width, int32_t new_height)
 {
-	if (bg_color == WHITE)
-		return (BG_WHITE);
-	else
-		return (BG_BLACK);
+	window->settings.width = new_width;
+	window->settings.height = new_height;
+}
+
+t_w_corner	set_corner(int32_t x, int32_t y, t_orientation orientation)
+{
+	t_w_corner	corner;
+
+	corner.x = x;
+	corner.y = y;
+	corner.orientation = orientation;
+	return (corner);
+}
+
+void	set_window_settings(t_window *window, int resizeable)
+{
+	resize_window(window, W_WIDTH, W_HEIGHT);
+	window->settings.is_resizeable = resizeable;
+	window->settings.min_width = 1280;
+	window->settings.max_width = 1920;
+	window->settings.min_height = 720;
+	window->settings.max_height = 1080;
+}
+
+void	set_corners(t_window *window, \
+						mlx_t *context, \
+							void (*f)(mlx_t *, int32_t *, int32_t *))
+{
+	f(context, &window->corners.top_left.x, &window->corners.top_left.y);
+	window->corners.top_left.y -= 28;
+	window->corners.top_left.orientation = TOP_LEFT;
+	window->corners.top_right = set_corner(window->corners.top_left.x + \
+												window->settings.width, \
+												window->corners.top_left.y, \
+												TOP_RIGHT);
+	window->corners.bottom_right = set_corner(window->corners.top_left.x + \
+												window->settings.width, \
+												window->corners.top_left.y + \
+												window->settings.height + 28, \
+												BOTTOM_RIGHT);
+	window->corners.bottom_left = set_corner(window->corners.top_left.x, \
+												window->corners.top_left.y + \
+												window->settings.height + 28, \
+												BOTTOM_RIGHT);
 }

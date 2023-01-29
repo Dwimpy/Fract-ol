@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   mlx_keys.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <w2.wizzard@gmail.com>              +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/01/01 21:06:45 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/06/27 14:28:01 by lde-la-h      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   mlx_keys.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/01 21:06:45 by W2Wizard          #+#    #+#             */
+/*   Updated: 2023/01/28 17:13:25 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ void mlx_key_hook(mlx_t* mlx, mlx_keyfunc func, void* param)
 bool mlx_is_key_down(mlx_t* mlx, keys_t key)
 {
 	MLX_ASSERT(mlx, "Parameter can't be null");
-
 	return (glfwGetKey(mlx->window, key) == GLFW_PRESS);
 }

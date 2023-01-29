@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:36:02 by arobu             #+#    #+#             */
-/*   Updated: 2022/12/01 02:26:20 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/26 18:07:26 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	*ft_memmove(void *dst, void *src, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+double	ft_abs_double(double value);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strtrim_char(const char *s1, const char c);
