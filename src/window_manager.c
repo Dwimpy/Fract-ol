@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 17:25:46 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 13:48:08 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:00:29 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	set_corners(t_window *window, \
 							void (*f)(mlx_t *, int32_t *, int32_t *))
 {
 	f(context, &window->corners.top_left.x, &window->corners.top_left.y);
-	window->corners.top_left.y -= 28;
+	window->corners.top_left.x = 0;
+	window->corners.top_left.y = 0;
 	window->corners.top_left.orientation = TOP_LEFT;
 	window->corners.top_right = set_corner(window->corners.top_left.x + \
 												window->settings.width, \
@@ -62,10 +63,10 @@ void	set_corners(t_window *window, \
 	window->corners.bottom_right = set_corner(window->corners.top_left.x + \
 												window->settings.width, \
 												window->corners.top_left.y + \
-												window->settings.height + 28, \
+												window->settings.height, \
 												BOTTOM_RIGHT);
 	window->corners.bottom_left = set_corner(window->corners.top_left.x, \
 												window->corners.top_left.y + \
-												window->settings.height + 28, \
+												window->settings.height, \
 												BOTTOM_RIGHT);
 }

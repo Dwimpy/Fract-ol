@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:28:32 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/28 23:31:54 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/29 14:56:59 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_renderer
 }				t_renderer;
 
 t_window	render_window(t_renderer *renderer);
-void	render_fractal_viewport(t_renderer *renderer, \
+void		render_fractal_viewport(t_renderer *renderer, \
 									t_fractal_node *fractal, \
 										t_window window, \
 											t_fractal_name name);
