@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:37:18 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/30 16:55:42 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/30 18:57:26 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,6 @@ void	render_fractal_horizontal(t_program *data, \
 	}
 }
 
-// void	render_known_right(t_program *data, uint32_t offset_x)
-// {
-// 	t_window	*window;
-// 	uint32_t	*copy_to;
-// 	uint32_t	*copy_from;
-// 	int			i;
-// 	int			j;
-
-// 	window = &data->window;
-// 	copy_to = (uint32_t *)data->fractals->front->image->pixels;
-// 	copy_from = copy_to + offset_x;
-// 	j = -1;
-// 	while (++j < window->settings.height)
-// 	{
-// 		i = -1;
-// 		while (++i < window->settings.width - offset_x)
-// 		{
-// 			*copy_to++ = *copy_from++;
-// 		}
-// 		copy_to += offset_x;
-// 		copy_from += offset_x;
-// 	}
-// }
 void	render_known_right(t_program *data, uint32_t offset_x)
 {
 	t_window	*window;
@@ -84,12 +61,13 @@ void	render_known_right(t_program *data, uint32_t offset_x)
 	j = -1;
 	while (++j < window->settings.height)
 	{
-		ft_memcpy(copy_to, copy_from, window->settings.width * sizeof(int));
+		ft_memmove(copy_to, \
+					copy_from, \
+						(window->settings.width - offset_x) * sizeof(int));
 		copy_to += window->settings.width;
 		copy_from += window->settings.width;
 	}
 }
-
 
 void	render_known_left(t_program *data, uint32_t offset_x)
 {

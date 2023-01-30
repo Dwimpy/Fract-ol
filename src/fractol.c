@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:21:10 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/30 04:59:51 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/30 19:16:57 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	fractol(void)
 {
 	t_program	data;
-	int32_t		curr_x;
-	int32_t		curr_y;
 
 	data.fractals = create_fractal_stack();
 	data.window = render_window(&data.renderer);
