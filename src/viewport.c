@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:19:45 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 19:50:29 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/30 17:49:03 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,4 @@ void	set_viewport_boundary(t_viewport *viewport)
 								+ viewport->pixel_size \
 									* (viewport->size.height / 2.0001);
 }
+

@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 02:13:28 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 19:44:36 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/30 17:45:17 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,19 @@ void	key_hooks(mlx_key_data_t keydata, t_program *data)
 {
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(data->renderer.mlx);
-	if (mlx_is_key_down(data->renderer.mlx, MLX_KEY_A) == true)
+	if (keydata.key == MLX_KEY_RIGHT && \
+			(keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
 	{
-		set_viewport_boundary(&data->fractals->front->viewport);
+		translate_right(data, 20);
+		render_known_right(data, 20);
+		render_fractal_horizontal(data, data->window.settings.width - 20, 20);
+	}
+	if (keydata.key == MLX_KEY_LEFT && \
+			(keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
+	{
+		translate_left(data, 20);
+		render_known_left(data, 20);
+		render_fractal_horizontal(data, 0, 20);
 	}
 }
 

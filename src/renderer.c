@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:49:39 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 19:26:34 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/30 01:56:02 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ t_window	render_window(t_renderer *renderer)
 	return (window);
 }
 
-void	rendering_loop(t_renderer *renderer)
-{
-	mlx_loop(renderer->mlx);
-}
 
 void	render_fractal_viewport(t_renderer *renderer, \
 									t_fractal_node *fractal, \

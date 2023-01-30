@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   renderer_translation.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 16:20:40 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/30 01:37:24 by arobu            ###   ########.fr       */
+/*   Created: 2023/01/30 01:12:43 by arobu             #+#    #+#             */
+/*   Updated: 2023/01/30 17:36:55 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#include "../include/data.h"
 
-# include "complex.h"
-# include "renderer.h"
-# include "data.h"
-
-void	fractol(void);
-
-#endif
+void	render_right(t_program *data, uint8_t offset)
+{
+	
+}

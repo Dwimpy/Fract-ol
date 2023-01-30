@@ -6,7 +6,7 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 14:38:01 by arobu             #+#    #+#              #
-#    Updated: 2023/01/29 18:08:23 by arobu            ###   ########.fr        #
+#    Updated: 2023/01/30 17:46:57 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,10 @@ MAIN_FILE		= main.c
 # Compiler
 
 CC			= gcc
-CFLAGS		= -O2 -march=nocona -flto #-fsanitize=address  #-g3 -Wall -Werror -Wextra -g3 #
-LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ~/.brew/opt/glfw/lib/ -lglfw -lm
-#LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/ -ldl -lglfw
+#CFLAGS		= -Ofast -march=nocona -flto #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
+CFLAGS		= -Ofast -march=native -flto #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
+#LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ~/.brew/opt/glfw/lib/ -lglfw -lm
+LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/ -ldl -lglfw
 #Archive and Remove
 
 RM			= rm -f

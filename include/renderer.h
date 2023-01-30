@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:28:32 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 19:25:10 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/30 01:55:51 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/include/libft.h"
 # include "window.h"
-# include "viewport.h"
 # include "fractals.h"
 
 typedef struct s_renderer
