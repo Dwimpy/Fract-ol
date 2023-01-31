@@ -6,10 +6,11 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:49:39 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/30 01:56:02 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/31 23:01:39 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
 #include "../include/renderer.h"
 
 t_window	render_window(t_renderer *renderer)
@@ -43,6 +44,40 @@ void	render_fractal_viewport(t_renderer *renderer, \
 	t_iteration	iteration;
 
 	create_fractal_image(&renderer, &fractal, &has_image);
+	i = -1;
+	fractal->viewport.data.c.imag = fractal->viewport.boundary.y_max;
+	while (++i < window.settings.height)
+	{
+		j = -1;
+		fractal->viewport.data.c.real = fractal->viewport.boundary.x_min;
+		while (++j < window.settings.width)
+		{
+			iteration = distance_estimation(fractal->viewport.pixel_size, \
+												&fractal->viewport.data.z, \
+													&fractal->viewport.data.c);
+			if (iteration.zone == BOUNDARY)
+			{
+				mlx_put_pixel(fractal->image, j, i, 0x0000FFFF);
+			}
+			else if (iteration.zone == OUTSIDE)
+				mlx_put_pixel(fractal->image, j, i, 0xFF00003a);
+			else
+				mlx_put_pixel(fractal->image, j, i, 0x000000FF);
+			fractal->viewport.data.c.real += fractal->viewport.pixel_size;
+		}
+		fractal->viewport.data.c.imag -= fractal->viewport.pixel_size;
+	}
+}
+
+void	render_viewport(t_renderer *renderer, \
+									t_fractal_node *fractal, \
+										t_window window)
+{
+	int			i;
+	int			j;
+	t_iteration	iteration;
+
+	//create_fractal_image(&renderer, &fractal, &has_image);
 	i = -1;
 	fractal->viewport.data.c.imag = fractal->viewport.boundary.y_max;
 	while (++i < window.settings.height)

@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:17:40 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/30 01:37:53 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/31 19:56:46 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	set_viewport_size(t_viewport *viewport, \
 								uint32_t height);
 void	set_viewport_boundary(t_viewport *viewport);
 void	set_pixel_size(t_viewport *viewport, double pixel_size);
-
+void	set_viewport_boundaries_zoom(t_viewport *viewport, \
+										int32_t mouse_x, int32_t mouse_y);
 #endif

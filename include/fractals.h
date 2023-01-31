@@ -6,15 +6,15 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/31 02:55:41 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/31 23:00:47 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTALS_H
 # define FRACTALS_H
 # define MAX_DEPTH 100
-# define THICKNESS 0.005
-# define RADIUS 10000
+# define THICKNESS 0.05
+# define RADIUS 1000
 // # define BOUNDARY -1.0
 // # define NOT_ENOUGH -2.0
 // # define OUTSIDE -3.0
@@ -94,7 +94,8 @@ t_fractal_node	*create_fractal(t_window *window, t_fractal_name name);
 void			initialize_fractal(t_fractal_node **fractal, \
 										t_window *window, \
 											t_fractal_name name);
-void			initialize_mandelbrot(t_fractal_node **fractal, t_window *window);
+void			initialize_mandelbrot(t_fractal_node **fractal, \
+										t_window *window);
 bool			has_image(t_fractal_node *fractal);
 
 #endif
