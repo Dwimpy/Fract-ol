@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 01:15:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/30 16:46:09 by arobu            ###   ########.fr       */
+/*   Updated: 2023/01/31 02:49:53 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	translate_up(t_program *data, uint32_t offset)
 
 	viewport = &data->fractals->front->viewport;
 	viewport->centers.cy += viewport->pixel_size * offset;
+	set_viewport_boundary(viewport);
 }
 
 void	translate_down(t_program *data, uint32_t offset)
@@ -44,4 +45,5 @@ void	translate_down(t_program *data, uint32_t offset)
 
 	viewport = &data->fractals->front->viewport;
 	viewport->centers.cy -= viewport->pixel_size * offset;
+	set_viewport_boundary(viewport);
 }
