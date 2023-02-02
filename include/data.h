@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:40:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/31 22:06:56 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:47:03 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DATA_H
 
 # include "renderer.h"
+# include "color.h"
 
 typedef enum e_dir
 {

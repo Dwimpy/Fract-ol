@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:18:51 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/31 23:01:19 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/02 20:27:13 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	initialize_mandelbrot(t_fractal_node **fractal, t_window *window)
 	t_viewport	*viewport;
 
 	viewport = &(*fractal)->viewport;
-	set_pixel_size(viewport, 0.003);
-	set_viewport_centers(viewport, -0.85, 0);
+	set_pixel_size(viewport, 0.0024);
+	set_viewport_centers(viewport, -0.8, 0);
 	set_viewport_size(viewport, \
 						window->settings.width, \
 							window->settings.height);

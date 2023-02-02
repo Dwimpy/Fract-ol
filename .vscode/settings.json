@@ -21,6 +21,7 @@
 		"string": "c",
 		"string_view": "c",
 		"vector": "c",
-		"fractals.h": "c"
+		"fractals.h": "c",
+		"algorithm": "c"
 	}
 }

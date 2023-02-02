@@ -6,12 +6,15 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:49:39 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/31 23:01:39 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/02 20:25:41 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <time.h>
 #include "../include/renderer.h"
+#include "../include/color.h"
+
+static uint32_t	put_pixel_color(t_iteration iteration);
 
 t_window	render_window(t_renderer *renderer)
 {
@@ -55,18 +58,25 @@ void	render_fractal_viewport(t_renderer *renderer, \
 			iteration = distance_estimation(fractal->viewport.pixel_size, \
 												&fractal->viewport.data.z, \
 													&fractal->viewport.data.c);
-			if (iteration.zone == BOUNDARY)
-			{
-				mlx_put_pixel(fractal->image, j, i, 0x0000FFFF);
-			}
-			else if (iteration.zone == OUTSIDE)
-				mlx_put_pixel(fractal->image, j, i, 0xFF00003a);
-			else
-				mlx_put_pixel(fractal->image, j, i, 0x000000FF);
+			mlx_put_pixel(fractal->image, j, i, put_pixel_color(iteration));
 			fractal->viewport.data.c.real += fractal->viewport.pixel_size;
 		}
 		fractal->viewport.data.c.imag -= fractal->viewport.pixel_size;
 	}
+}
+
+static uint32_t	put_pixel_color(t_iteration iteration)
+{
+	double	smooth;
+	t_rgb	rgb;
+
+	smooth = (iteration.iteration / MAX_DEPTH + 1 - iteration.value);
+	rgb = hsv_to_rgb((t_hsv){277 * sin(iteration.iteration) + smooth, (iteration.iteration / MAX_DEPTH) * 0.6f, 0.86f});
+	if (iteration.zone == OUTSIDE)
+		return (get_rgba(rgb.r * tan(iteration.value) * 99, rgb.g * iteration.value * 25, rgb.b * 255, 0xFF));
+	else if (iteration.zone == BOUNDARY)
+		return (get_rgba(rgb.r * cos(iteration.value / MAX_DEPTH * 34), rgb.g * 243, rgb.b * iteration.value * 255, 0xFF));
+	return (get_rgba(0x0, 0x0, 0x0, 0xFF));
 }
 
 void	render_viewport(t_renderer *renderer, \

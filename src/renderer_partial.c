@@ -6,15 +6,15 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:30:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/31 17:31:01 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:21:49 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/data.h"
 
 void	render_fractal_horizontal(t_program *data, \
-										int32_t start_pixel, \
-											int32_t offset_x)
+					int32_t start_pixel, \
+						int32_t offset_x)
 {
 	t_window		*window;
 	t_viewport		*viewport;
@@ -47,6 +47,8 @@ void	render_fractal_horizontal(t_program *data, \
 		viewport->data.c.imag -= viewport->pixel_size;
 	}
 }
+
+
 
 void	render_fractal_vertical(t_program *data, \
 									int32_t from_row, \

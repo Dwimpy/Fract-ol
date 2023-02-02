@@ -6,20 +6,21 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:28:14 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/29 18:16:44 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/02 20:17:19 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractals.h"
 
-void	mandelbrot_equation(t_complex *z, t_complex *c);
-void	mandelbrot_der_equation(t_complex *dz, t_complex *z, t_complex dc);
-
+static void	mandelbrot_equation(t_complex *z, t_complex *c);
+static void	mandelbrot_der_equation(t_complex *dz, t_complex *z, t_complex dc);
+static double	color(double z_mag_sq);
+static double	distance(double z_mag_sq, t_complex dz);
 t_iteration	distance_estimation(double pixel_size, \
 									t_complex *z, \
 										t_complex *c)
 {
-	double		mag_square;
+	double		mag_sq;
 	t_complex	dz;
 	t_complex	dc;
 	t_iteration	iteration;
@@ -30,27 +31,38 @@ t_iteration	distance_estimation(double pixel_size, \
 	set_complex(&dz, dc.real, dc.imag);
 	while (iteration.iteration < MAX_DEPTH)
 	{
-		mag_square = mag_squared(z->real, z->imag);
-		if (mag_square < mag_squared(dz.real, dz.imag))
-			return ((t_iteration){.iteration = iteration.iteration, \
-									iteration.zone = BOUNDARY});
-		if (mag_square > RADIUS)
-			return ((t_iteration){.iteration = iteration.iteration, \
-									iteration.zone = OUTSIDE});
+		mag_sq = mag_squared(z->real, z->imag);
+		if (mag_sq < mag_squared(dz.real, dz.imag))
+			return ((t_iteration){iteration.iteration, BOUNDARY, 0.});
+		if (mag_sq > RADIUS * RADIUS)
+			return ((t_iteration){iteration.iteration, \
+							OUTSIDE, distance(mag_sq, dz)});
 		mandelbrot_der_equation(&dz, z, dc);
 		mandelbrot_equation(z, c);
 		iteration.iteration++;
 	}
-	return ((t_iteration){.zone = INSET});
+	return ((t_iteration){iteration.iteration, INSET, 0.});
 }
 
-void	mandelbrot_equation(t_complex *z, t_complex *c)
+
+static double	color(double z_mag_sq)
+{
+	return log(log(z_mag_sq))/log(2);
+}
+
+static double	distance(double z_mag_sq, t_complex dz)
+{
+		return (log(z_mag_sq) * \
+			sqrt(z_mag_sq) / mag_squared(dz.real, dz.imag));
+}
+
+static void	mandelbrot_equation(t_complex *z, t_complex *c)
 {
 	multiply(z, z->real, z->imag);
 	add(z, c->real, c->imag);
 }
 
-void	mandelbrot_der_equation(t_complex *dz, t_complex *z, t_complex dc)
+static void	mandelbrot_der_equation(t_complex *dz, t_complex *z, t_complex dc)
 {
 	multiply(dz, z->real, z->imag);
 	multiply(dz, 2, 0);

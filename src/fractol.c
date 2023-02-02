@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:21:10 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/31 20:41:19 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/02 18:14:12 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,3 @@ void	fractol(void)
 	mlx_loop(data.renderer.mlx);
 	mlx_terminate(data.renderer.mlx);
 }
-/*
-f(-2, 1, -1, 1);
-*/
