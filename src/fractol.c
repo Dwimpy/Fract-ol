@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:21:10 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 02:47:47 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 22:27:59 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	fractol(void)
 	create_fractal_stack(&data.fractals);
 	data.window = render_window(&data.renderer);
 	add_new_fractal(&data.fractals);
-	initialize_fractal(&data, MANDELBROT);
-	render_fractal_viewport(&data.renderer, data.fractals->front, \
-								data.window, MANDELBROT);
+	initialize_fractal(&data, JULIA);
+	render_func_julia(&data, (t_complex){0., 0.}, (t_render_iter){0});
+	//render_viewport(&data, (t_render_iter){0}, DEFAULT);
 	mlx_loop_hook(data.renderer.mlx, (void *) movement_hook, &data);
 	mlx_key_hook(data.renderer.mlx, (mlx_keyfunc) key_hooks, &data);
 	mlx_scroll_hook(data.renderer.mlx, (mlx_scrollfunc) scroll_hook, &data);

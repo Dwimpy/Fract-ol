@@ -6,15 +6,15 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 17:05:36 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/02 18:09:22 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 21:18:33 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_H
 # define WINDOW_H
 # define DEFAULT_RESIZE_OPTION 1
-# define W_WIDTH 1280
-# define W_HEIGHT 760
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
 # define W_TITLE "Fract-ol"
 # define W_RESIZEABLE 1
 

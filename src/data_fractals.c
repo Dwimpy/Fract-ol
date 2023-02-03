@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 02:24:36 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 02:39:03 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 21:17:18 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 static void	initialize_mandelbrot(t_program *data, \
 								t_fractal_node **fractal);
+static void	initialize_julia(t_program *data, \
+								t_fractal_node **fractal);
 
 void	initialize_fractal(t_program *data, \
 							t_fractal_name name)
 {
 	if (name == MANDELBROT)
 		initialize_mandelbrot(data, &data->fractals->front);
+	if (name == JULIA)
+		initialize_julia(data, &data->fractals->front);
 }
 
 static void	initialize_mandelbrot(t_program *data, \
@@ -33,6 +37,23 @@ static void	initialize_mandelbrot(t_program *data, \
 	viewport = &(*fractal)->viewport;
 	set_pixel_size(viewport, 0.0024);
 	set_viewport_centers(viewport, -0.8, 0);
+	set_viewport_size(viewport, \
+						window->settings.width, \
+							window->settings.height);
+	set_viewport_boundary(viewport);
+}
+
+static void	initialize_julia(t_program *data, \
+								t_fractal_node **fractal)
+{
+	t_viewport	*viewport;
+	t_window	*window;
+
+	create_fractal_image(&data->renderer, fractal, has_image);
+	window = &data->window;
+	viewport = &(*fractal)->viewport;
+	set_pixel_size(viewport, 0.003);
+	set_viewport_centers(viewport, 0, 0);
 	set_viewport_size(viewport, \
 						window->settings.width, \
 							window->settings.height);

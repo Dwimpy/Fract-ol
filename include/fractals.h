@@ -6,14 +6,14 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 13:43:34 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 22:45:09 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTALS_H
 # define FRACTALS_H
-# define MAX_DEPTH 200
-# define THICKNESS 0.006
+# define MAX_DEPTH 100
+# define THICKNESS 0.007
 # define RADIUS 10000
 // # define BOUNDARY -1.0
 // # define NOT_ENOUGH -2.0
@@ -79,10 +79,12 @@ typedef struct s_fractals
 void			create_fractal_stack(t_fractals **fractals);
 int				is_stack_empty(t_fractals *fractals);
 void			add_new_fractal(t_fractals **fractals);
-t_iteration		distance_estimation(double pixel_size, \
-										t_complex *z, \
-											t_complex *c);
-
+t_iteration		mandelbrot_distance_estimation(double pixel_size, \
+						t_complex *z, \
+						t_complex *c);
+t_iteration		julia_distance_estimation(double pixel_size, \
+						t_complex *z, \
+						t_complex *c);
 /*
 ######################################
 #       Fractal nodes handling       #
