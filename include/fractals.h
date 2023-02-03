@@ -6,14 +6,14 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/02 20:26:09 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 13:43:34 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTALS_H
 # define FRACTALS_H
 # define MAX_DEPTH 200
-# define THICKNESS 0.01
+# define THICKNESS 0.006
 # define RADIUS 10000
 // # define BOUNDARY -1.0
 // # define NOT_ENOUGH -2.0
@@ -70,18 +70,15 @@ typedef struct s_fractals
 	t_fractal_node	*rear;
 }				t_fractals;
 
-
 /*
 ######################################
 #       Fractals list handling       #
 ######################################
 */
 
-t_fractals		*create_fractal_stack(void);
+void			create_fractal_stack(t_fractals **fractals);
 int				is_stack_empty(t_fractals *fractals);
-void			add_new_fractal(t_fractals **fractals, \
-									t_window *window, \
-										t_fractal_name name);
+void			add_new_fractal(t_fractals **fractals);
 t_iteration		distance_estimation(double pixel_size, \
 										t_complex *z, \
 											t_complex *c);
@@ -92,12 +89,8 @@ t_iteration		distance_estimation(double pixel_size, \
 ######################################
 */
 
-t_fractal_node	*create_fractal(t_window *window, t_fractal_name name);
-void			initialize_fractal(t_fractal_node **fractal, \
-										t_window *window, \
-											t_fractal_name name);
-void			initialize_mandelbrot(t_fractal_node **fractal, \
-										t_window *window);
+t_fractal_node	*create_empty_fractal(void);
+void			destroy_fractal(t_fractals **fractals, \
+								t_fractal_node *fractal);
 bool			has_image(t_fractal_node *fractal);
-
 #endif

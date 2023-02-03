@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:17:37 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/31 22:06:39 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 02:29:24 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	zoom(t_program *data, double ydelta, double scale)
 	set_viewport_centers(viewport, real, imag);
 	set_viewport_boundaries_zoom(viewport, data->mouse.x, data->mouse.y);
 	set_viewport_centers(viewport, \
-								viewport->boundary.x_min + \
-								viewport->pixel_size * viewport->size.width / 2, \
-									viewport->boundary.y_max - \
-										viewport->pixel_size * viewport->size.height / 2);
+						viewport->boundary.x_min + \
+						viewport->pixel_size * viewport->size.width / 2, \
+						viewport->boundary.y_max - \
+						viewport->pixel_size * viewport->size.height / 2);
 }

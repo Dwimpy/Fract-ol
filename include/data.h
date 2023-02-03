@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:40:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/02 15:47:03 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 02:38:37 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,11 @@ void		move_left(t_program *data, t_dir dir);
 void		move_up(t_program *data, t_dir dir);
 void		move_down(t_program *data, t_dir dir);
 void		zoom(t_program *data, double ydelta, double scale);
+
+void		initialize_fractal(t_program *data, \
+								t_fractal_name name);
+void		create_fractal_image(t_renderer *renderer, \
+								t_fractal_node **fractal, \
+								bool (*has_image)(t_fractal_node *fractal));
 
 #endif

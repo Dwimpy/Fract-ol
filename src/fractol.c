@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:21:10 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/02 18:14:12 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 02:47:47 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	fractol(void)
 	t_program	data;
 
 	data.controller_flag = 0x0;
-	data.fractals = create_fractal_stack();
+	create_fractal_stack(&data.fractals);
 	data.window = render_window(&data.renderer);
-	add_new_fractal(&data.fractals, &data.window, MANDELBROT);
+	add_new_fractal(&data.fractals);
+	initialize_fractal(&data, MANDELBROT);
 	render_fractal_viewport(&data.renderer, data.fractals->front, \
 								data.window, MANDELBROT);
 	mlx_loop_hook(data.renderer.mlx, (void *) movement_hook, &data);

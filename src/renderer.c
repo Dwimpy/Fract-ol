@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:49:39 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/02 20:33:13 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/03 04:31:41 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,24 @@ void	render_fractal_viewport(t_renderer *renderer, \
 	int			i;
 	int			j;
 	t_iteration	iteration;
+	t_viewport	*viewport;
 
-	create_fractal_image(&renderer, &fractal, &has_image);
+	viewport = &fractal->viewport;
 	i = -1;
-	fractal->viewport.data.c.imag = fractal->viewport.boundary.y_max;
-	while (++i < window.settings.height)
+	viewport->data.c.imag = viewport->boundary.y_max;
+	while (++i < viewport->size.height)
 	{
 		j = -1;
-		fractal->viewport.data.c.real = fractal->viewport.boundary.x_min;
-		while (++j < window.settings.width)
+		viewport->data.c.real = viewport->boundary.x_min;
+		while (++j < viewport->size.width)
 		{
-			iteration = distance_estimation(fractal->viewport.pixel_size, \
-												&fractal->viewport.data.z, \
-													&fractal->viewport.data.c);
+			iteration = distance_estimation(viewport->pixel_size, \
+												&viewport->data.z, \
+													&viewport->data.c);
 			mlx_put_pixel(fractal->image, j, i, put_pixel_color(iteration));
-			fractal->viewport.data.c.real += fractal->viewport.pixel_size;
+			viewport->data.c.real += viewport->pixel_size;
 		}
-		fractal->viewport.data.c.imag -= fractal->viewport.pixel_size;
+		viewport->data.c.imag -= viewport->pixel_size;
 	}
 }
 
@@ -71,11 +72,18 @@ static uint32_t	put_pixel_color(t_iteration iteration)
 	t_rgb	rgb;
 
 	smooth = (iteration.iteration / MAX_DEPTH + 1 - iteration.value);
-	rgb = hsv_to_rgb((t_hsv){277 * sin(iteration.iteration) + smooth, (iteration.iteration / MAX_DEPTH) * 0.6f, 0.86f});
+	rgb = hsv_to_rgb((t_hsv){359 * iteration.iteration / MAX_DEPTH, \
+							0.7f, .86f});
 	if (iteration.zone == OUTSIDE)
-		return (get_rgba(rgb.r * tan(iteration.value) * 99, rgb.g * iteration.value * 25, rgb.b * 255, 0xFF));
+		return (get_rgba(rgb.r * fabs(sin(sinh(iteration.value))) * 45, \
+						rgb.g * 12, \
+						rgb.b * fabs(sin(sinh(iteration.value))) *255, \
+						0xFF));
 	else if (iteration.zone == BOUNDARY)
-		return (get_rgba(rgb.r * cos(iteration.value / MAX_DEPTH * 34), rgb.g * 243, rgb.b * iteration.value * 255, 0xFF));
+		return (get_rgba(rgb.r * fabs(cosh(iteration.value)) * 177, \
+						rgb.g * 166, \
+						rgb.b * 199, \
+						0xFF));
 	return (get_rgba(0x0, 0x0, 0x0, 0xFF));
 }
 
@@ -87,7 +95,6 @@ void	render_viewport(t_renderer *renderer, \
 	int			j;
 	t_iteration	iteration;
 
-	//create_fractal_image(&renderer, &fractal, &has_image);
 	i = -1;
 	fractal->viewport.data.c.imag = fractal->viewport.boundary.y_max;
 	while (++i < window.settings.height)
@@ -118,21 +125,4 @@ void	renderer_put_pixels(t_renderer **renderer, \
 
 }
 
-void	create_fractal_image(t_renderer **renderer, \
-								t_fractal_node **fractal, \
-									bool (*has_image)(t_fractal_node *fractal))
-{
-	if (has_image(*fractal) == false)
-	{
-		(*fractal)->image = mlx_new_image((*renderer)->mlx, \
-											W_WIDTH, \
-												W_HEIGHT);
-		if (!fractal)
-		{
-			ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
-			exit(EXIT_FAILURE);
-		}
-		mlx_image_to_window((*renderer)->mlx, (*fractal)->image, 0, 0);
-		(*fractal)->has_image = true;
-	}
-}
+
