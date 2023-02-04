@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:28:14 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 22:50:27 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/04 01:06:27 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ t_iteration	julia_distance_estimation(double pixel_size, \
 		mag_sq = mag_squared(julia_z.real, julia_z.imag);
 		if (mag_sq < mag_squared(dz.real, dz.imag))
 			return ((t_iteration){iteration.iteration, BOUNDARY, 0.});
-		if (mag_sq > 10000)
+		if (mag_sq > RADIUS * RADIUS)
 			return ((t_iteration){iteration.iteration, \
 							OUTSIDE, color(distance(mag_sq, dz))});
-		mandelbrot_der_equation(&dz, z, dc);
+		mandelbrot_der_equation(&dz, &julia_z, dc);
 		mandelbrot_equation(&julia_z, c);
 		iteration.iteration++;
 	}	

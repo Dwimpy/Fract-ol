@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:33:21 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 22:51:08 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/04 00:57:27 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ void	render_func_julia(t_program *data, t_complex c, t_render_iter iter)
 	set_data_references(data, &viewport, &fractal);
 	init_behavior(data, &iter, DEFAULT);
 	start_col = iter.from_col;
-	viewport->data.c.real = -0.6;
-	viewport->data.c.imag = 0.5;
+	viewport->data.c = c;
 	viewport->data.z.imag = viewport->boundary.y_max - \
 						viewport->pixel_size * (iter.from_row);
 	while (++iter.from_row < iter.to_row)
