@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:40:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/04 15:41:52 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/06 22:06:19 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_program
 	t_renderer		renderer;
 	t_window		window;
 	t_mouse_pos		mouse;
+	t_pixel_data	*pixel_map;
 	uint8_t			controller_flag;
 }					t_program;
 
@@ -69,4 +70,7 @@ void			render_func_julia(t_program *data, t_render_iter iter);
 
 void			init_julia(t_program *data, t_render_iter *iter, \
 							int32_t *start_col);
+t_pixel_data	*init_pixel_map(void);
+void			animate(t_program *data);
+void			anim_translation(t_program *data, uint32_t offset, t_dir direction);
 #endif

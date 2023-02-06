@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 02:13:28 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/04 15:08:03 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/06 22:52:11 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 void	movement_hook(t_program *data)
 {
 	handle_movement(data);
+	// if (mlx_is_key_down(data->renderer.mlx, MLX_KEY_P))
+	// {
+		animate(data);
+	//}
 }
 
 void	scroll_hook(double xdelta, double ydelta, t_program *data)
@@ -29,8 +33,7 @@ void	scroll_hook(double xdelta, double ydelta, t_program *data)
 
 void	key_hooks(mlx_key_data_t keydata, t_program *data)
 {
-	handle_keys(data, keydata.action, keydata.key);
-}
+	handle_keys(data, keydata.action, keydata.key);}
 
 void	resize_hooks(int32_t new_width, int32_t new_height, t_program *data)
 {

@@ -37,6 +37,16 @@
 		"chrono": "c",
 		"limits": "c",
 		"memory": "c",
-		"ratio": "c"
-	}
+		"ratio": "c",
+		"window.h": "c",
+		"__split_buffer": "c",
+		"locale": "c",
+		"unordered_map": "c",
+		"__bit_reference": "c",
+		"__node_handle": "c",
+		"bitset": "c",
+		"__memory": "c",
+		"optional": "c"
+	},
+	"codam-norminette-3.highlight-color": "rgba(186,87,255,0.15)"
 }

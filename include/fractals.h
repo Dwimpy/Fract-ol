@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/06 01:57:31 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/06 21:38:15 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,15 @@ typedef struct s_iteration
 {
 	unsigned int	iteration;
 	t_fractal_zone	zone;
-	double			value;
 }					t_iteration;
+
+typedef struct s_pixel_data
+{
+	double		k;
+	double		potential;
+	double		distance;
+	t_iteration	iteration;
+}				t_pixel_data;
 
 typedef struct s_fractal_node
 {
@@ -79,12 +86,15 @@ typedef struct s_fractals
 void			create_fractal_stack(t_fractals **fractals);
 int				is_stack_empty(t_fractals *fractals);
 void			add_new_fractal(t_fractals **fractals);
-t_iteration		mandelbrot_distance_estimation(double pixel_size, \
+t_pixel_data	*mandelbrot_de(double pixel_size, \
+					t_complex *z, \
+					t_complex *c,
+					t_pixel_data *pixel_map);
+t_pixel_data	julia_de(double pixel_size, \
 						t_complex *z, \
 						t_complex *c);
-t_iteration		julia_distance_estimation(double pixel_size, \
-						t_complex *z, \
-						t_complex *c);
+t_pixel_data	*distance(t_pixel_data *data, double z_mag_sq, t_complex dz);
+t_pixel_data	*on_boundary(t_pixel_data *data, uint32_t iteration);
 /*
 ######################################
 #       Fractal nodes handling       #

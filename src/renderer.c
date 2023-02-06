@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:49:39 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/06 01:53:36 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/06 20:28:13 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,40 @@ t_window	render_window(t_renderer *renderer)
 	return (window);
 }
 
-uint32_t	put_pixel_color(t_iteration iteration)
+uint32_t	put_pixel_color(t_pixel_data *data)
 {
 	double	a;
 	double	b;
 	double	c;
-	t_rgb	rgb;
+	double	potential;
+	double	k;
 
 	a = 1.;
 	b = 0.34004648219;
 	c = 0.17965377284;
-	if (iteration.zone == OUTSIDE)
-		return (get_rgba(((1 - cos(a * iteration.value)) / 2) * 200, \
-						((1 - cos(b * iteration.value)) / 2) * 155, \
-						((1 - cos(c * iteration.value)) / 2) * 77, \
+	k = (1. / sqrt(data->distance)) * (data->k * data->k + .25);
+	potential = data->potential / k;
+	if (data->iteration.zone == OUTSIDE)
+		return (get_rgba(((1 - cos(a * potential)) / 2) * 255, \
+						((1 - cos(b * potential)) / 2) * 166, \
+						((1 - cos(c * potential)) / 2) * 255, \
 						0xFF));
-	if (iteration.zone == BOUNDARY)
-		return (get_rgba((iteration.value) * 188, \
+	if (data->iteration.zone == BOUNDARY)
+		return (get_rgba((data->potential) * 188, \
 						155, \
 						255, \
 						0xFF));
 	return (get_rgba(0x0, 0x0, 0x0, 0xFF));
 }
+
+// double	distance(double z_mag_sq, t_complex dz, double power)
+// {
+// 	double	distance;
+// 	double	k;
+
+// 	distance = log(z_mag_sq) * 0.5f * \
+// 		sqrt(z_mag_sq / mag_squared(dz.real, dz.imag));
+// 	k = fabs(sin(3.1415)) * 3.f;
+// 	k = (1./sqrt(distance)) * (k * k + .25f);
+// 	return (log(log(z_mag_sq) / power) * k);
+// }

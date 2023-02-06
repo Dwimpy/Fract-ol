@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:05:37 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/05 23:45:10 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:09:09 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		mandelbrot_equation(t_complex *z, t_complex *c);
 void		mandelbrot_der_equation(t_complex *dz, \
 										t_complex *z, t_complex dc);
 double		color(double z_mag_sq);
-double		distance(double z_mag_sq, t_complex dz, double power);
+
 /*
 ######################################
 #              Printing	             #
