@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:52:16 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 02:46:12 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/04 16:59:04 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	add_new_fractal(t_fractals **fractals)
 		(*fractals)->rear -> next = new_fractal;
 		(*fractals)->rear = (*fractals)->rear->next;
 		(*fractals)->front->prev = (*fractals)->rear;
+		(*fractals)->front = (*fractals)->front->next;
 	}
 	(*fractals)->size++;
 }

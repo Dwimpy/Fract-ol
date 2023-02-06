@@ -6,22 +6,23 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 20:41:11 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/04 01:09:48 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/06 01:48:12 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/complex.h"
 #include <math.h>
 
-double	color(double z_mag_sq)
+double	distance(double z_mag_sq, t_complex dz, double power)
 {
-	return (log(log(z_mag_sq)) / log(2));
-}
+	double	distance;
+	double	k;
 
-double	distance(double z_mag_sq, t_complex dz)
-{
-	return (log(z_mag_sq) * \
-		sqrt(z_mag_sq) / mag_squared(dz.real, dz.imag));
+	distance = log(z_mag_sq) * 0.5f * \
+		sqrt(z_mag_sq / mag_squared(dz.real, dz.imag));
+	k = 25;
+	k = (1./sqrt(distance)) * (k * k + .25f);
+	return (log(log(z_mag_sq) / power) * k);
 }
 
 void	mandelbrot_equation(t_complex *z, t_complex *c)

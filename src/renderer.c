@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:49:39 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 22:52:19 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/06 01:53:36 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,23 @@ t_window	render_window(t_renderer *renderer)
 
 uint32_t	put_pixel_color(t_iteration iteration)
 {
-	double	smooth;
+	double	a;
+	double	b;
+	double	c;
 	t_rgb	rgb;
-	t_hsv	hsv;
 
-	rgb = hsv_to_rgb((t_hsv){359 * iteration.iteration / MAX_DEPTH, \
-							0.7f, .86f});
+	a = 1.;
+	b = 0.34004648219;
+	c = 0.17965377284;
 	if (iteration.zone == OUTSIDE)
-		return (get_rgba(rgb.r * fabs(sin(sinh(iteration.value))) * 45, \
-						rgb.g * 12, \
-						rgb.b * fabs(sin(sinh(iteration.value))) *255, \
+		return (get_rgba(((1 - cos(a * iteration.value)) / 2) * 200, \
+						((1 - cos(b * iteration.value)) / 2) * 155, \
+						((1 - cos(c * iteration.value)) / 2) * 77, \
 						0xFF));
-	else if (iteration.zone == BOUNDARY)
-		return (get_rgba(rgb.r * fabs(cosh(iteration.value)) * 177, \
-						rgb.g * 166, \
-						rgb.b * 199, \
+	if (iteration.zone == BOUNDARY)
+		return (get_rgba((iteration.value) * 188, \
+						155, \
+						255, \
 						0xFF));
 	return (get_rgba(0x0, 0x0, 0x0, 0xFF));
 }
