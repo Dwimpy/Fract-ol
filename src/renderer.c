@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:49:39 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 03:07:08 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 13:59:24 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ uint32_t	put_pixel_color(t_pixel_data *data)
 	a = 1.;
 	b = 0.34004648219;
 	c = 0.17965377284;
-	k = (1. / sqrt(data->distance)) * (data->k * data->k);
+	k = (1. / sqrt(sqrt(data->distance))) * (data->k * data->k + 0.25);
 	potential = data->potential / k;
 	if (data->iteration.zone == OUTSIDE)
 		return (get_rgba(((1 - cos(a * potential)) / 2) * 255, \
-						((1 - cos(b * potential)) / 2) * 255, \
+						((1 - cos(b * potential)) / 2) * 167, \
 						((1 - cos(c * potential)) / 2) * 255, \
 						0xFF));
 	if (data->iteration.zone == BOUNDARY)
