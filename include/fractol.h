@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:20:40 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/02 15:46:59 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 20:10:36 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 # include "data.h"
 
 void	fractol(void);
-
+void	arg_checker(int argc, char **argv);
 #endif

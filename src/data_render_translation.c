@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 01:12:43 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 14:10:59 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 15:17:01 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	render_known_up(t_program *data, uint32_t offset_y)
 
 	window = &data->window;
 	copy_to = (uint32_t *)data->fractals->front->image->pixels + \
-		window->settings.width * (window->settings.height);
+		window->settings.width * (window->settings.height) - 1;
 	copy_from = copy_to - offset_y * window->settings.width;
 	j = -1;
 	while (++j < window->settings.height - offset_y)

@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:21:10 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/06 15:44:36 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 18:34:33 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	fractol(void)
 	data.controller_flag = 0x0;
 	c.real = -0.7;
 	c.imag = 0.27015;
+	char *str = "-31123E-5";
+	printf("%f", ft_atof(str));
 	data.pixel_map = init_pixel_map();
 	create_fractal_stack(&data.fractals);
 	data.window = render_window(&data.renderer);

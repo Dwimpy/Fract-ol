@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	// mlx_terminate(mlx);
 	// if (argc == 1)
 	// 	return (0);
+	arg_checker(argc, argv);
 	fractol();
 	return (EXIT_SUCCESS);
 }

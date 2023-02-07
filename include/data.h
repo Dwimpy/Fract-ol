@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:40:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 13:36:56 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 15:24:47 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void			render_and_translate(t_program *data, int32_t offset, \
 								t_render_iter iter, t_dir direction);
 t_render_iter	set_offset(uint32_t from_col, uint32_t from_row, \
 							uint32_t to_col, uint32_t to_row);
-void			render_func_julia(t_program *data, t_render_iter iter);
 
 void			init_julia(t_program *data, t_render_iter *iter, \
 							int32_t *start_col);

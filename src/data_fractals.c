@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 02:24:36 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/06 16:25:26 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 15:36:12 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	initialize_julia(t_program *data, \
 	viewport = &(*fractal)->viewport;
 	(*fractal)->name = JULIA;
 	(*fractal)->viewport.data.c = c;
-	set_pixel_size(viewport, 0.001);
+	set_pixel_size(viewport, 0.0024);
 	set_viewport_centers(viewport, 0, 0);
 	set_viewport_size(viewport, \
 						window->settings.width, \

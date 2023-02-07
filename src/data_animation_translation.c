@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 22:02:24 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 14:11:00 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 15:17:48 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static void	anim_known_left(t_program *data, uint32_t offset_x)
 	int				i;
 
 	window = &data->window;
-	copy_to = (t_pixel_data *)data->pixel_map + window->settings.width * \
-					window->settings.height - 1;
+	copy_to = (t_pixel_data *)data->pixel_map + (window->settings.width * \
+					window->settings.height) - 1;
 	copy_from = copy_to - offset_x;
 	j = -1;
 	while (++j < window->settings.height)
@@ -83,8 +83,8 @@ static void	anim_known_up(t_program *data, uint32_t offset_y)
 	int				j;
 
 	window = &data->window;
-	copy_to = (t_pixel_data *)data->pixel_map + window->settings.width * \
-						(window->settings.height);
+	copy_to = (t_pixel_data *)data->pixel_map + (window->settings.width * \
+						window->settings.height) - 1;
 	copy_from = copy_to - offset_y * window->settings.width;
 	j = -1;
 	while (++j < window->settings.height - offset_y)

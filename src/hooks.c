@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 02:13:28 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 14:16:01 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 16:38:27 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	scroll_hook(double xdelta, double ydelta, t_program *data)
 
 void	key_hooks(mlx_key_data_t keydata, t_program *data)
 {
-	handle_keys(data, keydata.action, keydata.key);}
+	handle_keys(data, keydata.action, keydata.key);
+}
 
 void	resize_hooks(int32_t new_width, int32_t new_height, t_program *data)
 {

@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:36:02 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/30 17:34:57 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 17:23:50 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_atoi(const char *str);
+double	ft_atof(const char *str);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_contains(const char *str, char c);

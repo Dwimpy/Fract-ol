@@ -6,18 +6,15 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 02:39:35 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 15:33:00 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTALS_H
 # define FRACTALS_H
-# define MAX_DEPTH 200
+# define MAX_DEPTH 100
 # define THICKNESS 0.005
 # define RADIUS 10000
-// # define BOUNDARY -1.0
-// # define NOT_ENOUGH -2.0
-// # define OUTSIDE -3.0
 # include <stdbool.h>
 # include "viewport.h"
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -90,9 +87,10 @@ t_pixel_data	*mandelbrot_de(double pixel_size, \
 					t_complex *z, \
 					t_complex *c,
 					t_pixel_data *pixel_map);
-t_pixel_data	julia_de(double pixel_size, \
-						t_complex *z, \
-						t_complex *c);
+t_pixel_data	*julia_de(double pixel_size, \
+					t_complex *z, \
+					t_complex *c,
+					t_pixel_data *pixel_map);
 t_pixel_data	*distance(t_pixel_data *data, double z_mag_sq, t_complex dz);
 t_pixel_data	*on_boundary(t_pixel_data *data, uint32_t iteration);
 /*
