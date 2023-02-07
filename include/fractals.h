@@ -6,13 +6,13 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/06 21:38:15 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 02:39:35 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTALS_H
 # define FRACTALS_H
-# define MAX_DEPTH 100
+# define MAX_DEPTH 200
 # define THICKNESS 0.005
 # define RADIUS 10000
 // # define BOUNDARY -1.0

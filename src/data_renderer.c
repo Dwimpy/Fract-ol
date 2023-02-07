@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:33:21 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/06 22:47:00 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/07 02:14:23 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ static void	render_func(t_program *data, t_render_iter iter)
 			mandelbrot_de(viewport->pixel_size, &viewport->data.z, \
 			&viewport->data.c, &data->pixel_map[row_index + iter.from_col]);
 			mlx_put_pixel(fractal->image, iter.from_col, iter.from_row, \
-							put_pixel_color(&data->pixel_map[row_index + \
-															iter.from_col]));
+			put_pixel_color(&data->pixel_map[row_index + iter.from_col]));
 			viewport->data.c.real += viewport->pixel_size;
 		}
 		viewport->data.c.imag -= viewport->pixel_size;
