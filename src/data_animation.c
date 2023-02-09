@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:30:48 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 14:01:04 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/09 20:04:20 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	animate(t_program *data)
 {
-	uint32_t	row_index;
 	uint32_t	i;
 	uint32_t	j;
 	t_viewport	*vp;
-	uint32_t	pixel_row;
 
 	vp = &data->fractals->front->viewport;
 	j = -1;

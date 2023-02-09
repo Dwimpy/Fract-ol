@@ -6,18 +6,18 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 22:02:24 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 15:17:48 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/09 20:06:23 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/data.h"
 
-static void	anim_known_right(t_program *data, uint32_t offset_x);
-static void	anim_known_left(t_program *data, uint32_t offset_x);
-static void	anim_known_up(t_program *data, uint32_t offset_y);
-static void	anim_known_down(t_program *data, uint32_t offset_y);
+static void	anim_known_right(t_program *data, int32_t offset_x);
+static void	anim_known_left(t_program *data, int32_t offset_x);
+static void	anim_known_up(t_program *data, int32_t offset_y);
+static void	anim_known_down(t_program *data, int32_t offset_y);
 
-void	anim_translation(t_program *data, uint32_t offset, t_dir direction)
+void	anim_translation(t_program *data, int32_t offset, t_dir direction)
 {
 	if (direction == RIGHT)
 		anim_known_right(data, offset);
@@ -29,13 +29,13 @@ void	anim_translation(t_program *data, uint32_t offset, t_dir direction)
 		anim_known_down(data, offset);
 }
 
-static void	anim_known_right(t_program *data, uint32_t offset_x)
+static void	anim_known_right(t_program *data, int32_t offset_x)
 {
 	t_window		*window;
 	t_pixel_data	*copy_to;
 	t_pixel_data	*copy_from;
-	int				j;
-	int				i;
+	int32_t			j;
+	int32_t			i;
 
 	window = &data->window;
 	copy_to = (t_pixel_data *)data->pixel_map;
@@ -51,13 +51,13 @@ static void	anim_known_right(t_program *data, uint32_t offset_x)
 	}
 }
 
-static void	anim_known_left(t_program *data, uint32_t offset_x)
+static void	anim_known_left(t_program *data, int32_t offset_x)
 {
 	t_window		*window;
 	t_pixel_data	*copy_to;
 	t_pixel_data	*copy_from;
-	int				j;
-	int				i;
+	int32_t			j;
+	int32_t			i;
 
 	window = &data->window;
 	copy_to = (t_pixel_data *)data->pixel_map + (window->settings.width * \
@@ -74,13 +74,13 @@ static void	anim_known_left(t_program *data, uint32_t offset_x)
 	}
 }
 
-static void	anim_known_up(t_program *data, uint32_t offset_y)
+static void	anim_known_up(t_program *data, int32_t offset_y)
 {
 	t_window		*window;
 	t_pixel_data	*copy_to;
 	t_pixel_data	*copy_from;
-	int				i;
-	int				j;
+	int32_t			j;
+	int32_t			i;
 
 	window = &data->window;
 	copy_to = (t_pixel_data *)data->pixel_map + (window->settings.width * \
@@ -95,13 +95,13 @@ static void	anim_known_up(t_program *data, uint32_t offset_y)
 	}
 }
 
-static void	anim_known_down(t_program *data, uint32_t offset_y)
+static void	anim_known_down(t_program *data, int32_t offset_y)
 {
 	t_window		*window;
 	t_pixel_data	*copy_to;
 	t_pixel_data	*copy_from;
-	int				i;
-	int				j;
+	int32_t			j;
+	int32_t			i;
 
 	window = &data->window;
 	copy_to = (t_pixel_data *)data->pixel_map;

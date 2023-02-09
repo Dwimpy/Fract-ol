@@ -16,7 +16,6 @@
 int	main(int argc, char **argv)
 {
 
-
 	// mlx_t		*mlx;
 	// mlx_image_t	*image;
 

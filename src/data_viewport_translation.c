@@ -6,18 +6,18 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 01:15:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 19:13:51 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/09 20:08:45 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/data.h"
 
-static void	translate_right(t_program *data, uint32_t offset);
-static void	translate_left(t_program *data, uint32_t offset);
-static void	translate_up(t_program *data, uint32_t offset);
-static void	translate_down(t_program *data, uint32_t offset);
+static void	translate_right(t_program *data, int32_t offset);
+static void	translate_left(t_program *data, int32_t offset);
+static void	translate_up(t_program *data, int32_t offset);
+static void	translate_down(t_program *data, int32_t offset);
 
-void	translate_viewport(t_program *data, uint32_t offset, t_dir direction)
+void	translate_viewport(t_program *data, int32_t offset, t_dir direction)
 {
 	if (direction == RIGHT)
 		translate_right(data, offset);
@@ -29,7 +29,7 @@ void	translate_viewport(t_program *data, uint32_t offset, t_dir direction)
 		translate_down(data, offset);
 }
 
-static void	translate_right(t_program *data, uint32_t offset)
+static void	translate_right(t_program *data, int32_t offset)
 {
 	t_viewport	*viewport;
 
@@ -38,7 +38,7 @@ static void	translate_right(t_program *data, uint32_t offset)
 	set_viewport_boundary(viewport);
 }
 
-static void	translate_left(t_program *data, uint32_t offset)
+static void	translate_left(t_program *data, int32_t offset)
 {
 	t_viewport	*viewport;
 
@@ -47,7 +47,7 @@ static void	translate_left(t_program *data, uint32_t offset)
 	set_viewport_boundary(viewport);
 }
 
-static void	translate_up(t_program *data, uint32_t offset)
+static void	translate_up(t_program *data, int32_t offset)
 {
 	t_viewport	*viewport;
 
@@ -56,7 +56,7 @@ static void	translate_up(t_program *data, uint32_t offset)
 	set_viewport_boundary(viewport);
 }
 
-static void	translate_down(t_program *data, uint32_t offset)
+static void	translate_down(t_program *data, int32_t offset)
 {
 	t_viewport	*viewport;
 

@@ -6,18 +6,18 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 01:12:43 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 15:17:01 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/09 20:07:11 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/data.h"
 
-static void	render_known_right(t_program *data, uint32_t offset_x);
-static void	render_known_left(t_program *data, uint32_t offset_x);
-static void	render_known_up(t_program *data, uint32_t offset_y);
-static void	render_known_down(t_program *data, uint32_t offset_y);
+static void	render_known_right(t_program *data, int32_t offset_x);
+static void	render_known_left(t_program *data, int32_t offset_x);
+static void	render_known_up(t_program *data, int32_t offset_y);
+static void	render_known_down(t_program *data, int32_t offset_y);
 
-void	render_translation(t_program *data, uint32_t offset, t_dir direction)
+void	render_translation(t_program *data, int32_t offset, t_dir direction)
 {
 	if (direction == RIGHT)
 		render_known_right(data, offset);
@@ -29,7 +29,7 @@ void	render_translation(t_program *data, uint32_t offset, t_dir direction)
 		render_known_down(data, offset);
 }
 
-static void	render_known_right(t_program *data, uint32_t offset_x)
+static void	render_known_right(t_program *data, int32_t offset_x)
 {
 	t_window		*window;
 	uint32_t		*copy_to;
@@ -51,7 +51,7 @@ static void	render_known_right(t_program *data, uint32_t offset_x)
 	}
 }
 
-static void	render_known_left(t_program *data, uint32_t offset_x)
+static void	render_known_left(t_program *data, int32_t offset_x)
 {
 	t_window		*window;
 	uint32_t		*copy_to;
@@ -74,7 +74,7 @@ static void	render_known_left(t_program *data, uint32_t offset_x)
 	}
 }
 
-static void	render_known_up(t_program *data, uint32_t offset_y)
+static void	render_known_up(t_program *data, int32_t offset_y)
 {
 	t_window		*window;
 	uint32_t		*copy_to;
@@ -96,7 +96,7 @@ static void	render_known_up(t_program *data, uint32_t offset_y)
 
 }
 
-static void	render_known_down(t_program *data, uint32_t offset_y)
+static void	render_known_down(t_program *data, int32_t offset_y)
 {
 	t_window		*window;
 	uint32_t		*copy_to;
