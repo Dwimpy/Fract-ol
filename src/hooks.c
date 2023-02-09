@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 02:13:28 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/09 20:09:57 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/09 20:12:43 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ void	movement_hook(t_program *data)
 	animate(data);
 }
 
+double	void_var(double x)
+{
+	return (x);
+}
+
 void	scroll_hook(double xdelta, double ydelta, t_program *data)
 {
+	void_var(xdelta);
 	if (ydelta)
 	{
 		mlx_get_mouse_pos(data->renderer.mlx, &data->mouse.x, &data->mouse.y);

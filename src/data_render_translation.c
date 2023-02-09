@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 01:12:43 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/09 20:07:11 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/09 21:13:34 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ static void	render_known_up(t_program *data, int32_t offset_y)
 		while (++i < window->settings.width)
 			*copy_to-- = *copy_from--;
 	}
-
 }
 
 static void	render_known_down(t_program *data, int32_t offset_y)
