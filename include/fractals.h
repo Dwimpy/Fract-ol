@@ -6,14 +6,14 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 15:01:14 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 19:04:29 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTALS_H
 # define FRACTALS_H
 # define MAX_DEPTH 100
-# define THICKNESS 0.005
+# define THICKNESS 0.008
 # define RADIUS 10000
 # include <stdbool.h>
 # include "viewport.h"
@@ -92,6 +92,7 @@ t_pixel_data	*julia_de(double pixel_size, \
 					t_pixel_data *pixel_map);
 t_pixel_data	*distance(t_pixel_data *data, double z_mag_sq, t_complex dz);
 t_pixel_data	*on_boundary(t_pixel_data *data, uint32_t iteration);
+void			destroy_stack(t_fractals **fractals, mlx_t *mlx);
 /*
 ######################################
 #       Fractal nodes handling       #
@@ -99,7 +100,6 @@ t_pixel_data	*on_boundary(t_pixel_data *data, uint32_t iteration);
 */
 
 t_fractal_node	*create_empty_fractal(void);
-void			destroy_fractal(t_fractals **fractals, \
-								t_fractal_node *fractal);
+void			*destroy_node(mlx_t *mlx, t_fractal_node **node);
 bool			has_image(t_fractal_node *fractal);
 #endif

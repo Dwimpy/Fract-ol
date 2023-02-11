@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:52:16 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/04 16:59:04 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 18:35:02 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,24 @@ void	add_new_fractal(t_fractals **fractals)
 		(*fractals)->front = (*fractals)->front->next;
 	}
 	(*fractals)->size++;
+}
+
+void	destroy_stack(t_fractals **fractals, mlx_t *mlx)
+{
+	t_fractal_node	*current;
+	t_fractal_node	*next;
+
+	if (is_stack_empty(*fractals))
+		return ;
+	current = (*fractals)->front;
+	next = current->next;
+	while (current != (*fractals)->rear)
+	{
+		current = destroy_node(mlx, &current);
+		current = next;
+		next = current->next;
+	}
+	current = destroy_node(mlx, &current);
+	free(*fractals);
+	*fractals = NULL;
 }

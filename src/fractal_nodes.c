@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:18:51 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/03 02:47:28 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 18:26:15 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,13 @@ t_fractal_node	*create_empty_fractal(void)
 bool	has_image(t_fractal_node *fractal)
 {
 	return (fractal->has_image == true);
+}
+
+void	*destroy_node(mlx_t *mlx, t_fractal_node **node)
+{
+	if ((*node)->has_image == true)
+		mlx_delete_image(mlx, (*node)->image);
+	free(*node);
+	*node = NULL;
+	return (NULL);
 }

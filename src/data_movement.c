@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:37:18 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 14:24:17 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 19:01:33 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	move_up(t_program *data)
 	t_viewport	*viewport;
 
 	viewport = &data->fractals->front->viewport;
-	render_and_translate(data, 20,	\
+	render_and_translate(data, 20, \
 	set_offset(0, 0, viewport->size.width, 20), UP);
 }
 

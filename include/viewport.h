@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:17:40 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/02 18:09:21 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 16:10:33 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_boundary
 
 typedef struct s_data
 {
-	t_complex	z;
-	t_complex	c;
+	t_complex	var;
+	t_complex	constant;
 }				t_data;
 
 typedef struct s_viewport

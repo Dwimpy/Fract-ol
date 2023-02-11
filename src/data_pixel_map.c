@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:38:54 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 02:52:38 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 19:01:21 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ t_pixel_data	*init_pixel_map(void)
 		return (NULL);
 	return (pixel_map);
 }
-

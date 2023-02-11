@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 02:13:28 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 14:24:06 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 19:00:56 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	movement_hook(t_program *data)
 {
 	handle_movement(data);
-	animate(data);
+	if (data->args.is_animated == true)
+		animate(data);
 }
 
 double	void_var(double x)
@@ -41,7 +42,6 @@ void	key_hooks(mlx_key_data_t keydata, t_program *data)
 
 void	resize_hooks(int32_t new_width, int32_t new_height, t_program *data)
 {
-
 	resize_window(&data->window, new_width, new_height);
 	mlx_resize_image(data->fractals->front->image, \
 						data->window.settings.width, \

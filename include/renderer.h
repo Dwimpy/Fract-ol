@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:28:32 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 14:36:49 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 18:16:31 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/include/libft.h"
 # include "window.h"
 # include "fractals.h"
+# include "color.h"
 
 typedef enum s_render_enum
 {
@@ -37,5 +38,5 @@ typedef struct s_renderer
 }				t_renderer;
 
 t_window	render_window(t_renderer *renderer);
-uint32_t	put_pixel_color(t_pixel_data *data, double data_k);
+uint32_t	put_pixel_color(t_pixel_data *data, t_rgb color, double data_k);
 #endif

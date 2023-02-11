@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:18:12 by arobu             #+#    #+#             */
-/*   Updated: 2023/01/24 00:25:37 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 19:02:15 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	s_multiply(t_complex *z, double scalar)
 
 void	multiply(t_complex *z1, double real, double imag)
 {
-	double real_z;
+	double	real_z;
 
 	real_z = z1->real;
 	z1->real = z1->real * real - z1->imag * imag;

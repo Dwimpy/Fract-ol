@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 20:32:05 by arobu             #+#    #+#             */
-/*   Updated: 2022/11/25 19:18:52 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 22:16:19 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	ft_atoi(const char *s)
 		s++;
 	}
 	if (sum > INT_MAX && sign == 1)
-		return (-1);
+		return (INT_MAX);
 	if (sum > 2147483648 && sign == -1)
-		return (0);
+		return (INT_MAX);
 	return (sign * sum);
 }

@@ -15,20 +15,11 @@
 
 int	main(int argc, char **argv)
 {
+	t_arg_opts	args;
 
-	// mlx_t		*mlx;
-	// mlx_image_t	*image;
-
-	// mlx = mlx_init(1024,1024, "Fract'ol", true);
-	// image = mlx_new_image(mlx, 1024, 1024);
-	// ft_memset(image->pixels, 0, image->width * image->height * sizeof(int));
-	// mlx_image_to_window(mlx, image, 0, 0);
-	// mlx_put_pixel(image, 25, 25, 0x00FFFFFF);
-	// mlx_loop(mlx);
-	// mlx_terminate(mlx);
-	// if (argc == 1)
-	// 	return (0);
-	arg_checker(argc, argv);
-	fractol();
+	init_args(&args);
+	arg_checker(argc, argv, &args);
+	get_color_args(argv, &args);
+	fractol(&args);
 	return (EXIT_SUCCESS);
 }

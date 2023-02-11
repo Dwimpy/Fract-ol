@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 17:05:36 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 15:36:46 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 18:59:58 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define W_HEIGHT 760
 # define W_TITLE "Fract-ol"
 # define W_RESIZEABLE 1
-
 
 # include "../MLX42/include/MLX42/MLX42.h"
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_fractals.c                                    :+:      :+:    :+:   */
+/*   data_fractals_init.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 02:24:36 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 15:36:12 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 18:10:17 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 static void	initialize_mandelbrot(t_program *data, \
 								t_fractal_node **fractal);
 static void	initialize_julia(t_program *data, \
-								t_fractal_node **fractal, \
-									t_complex c);
+								t_fractal_node **fractal);
 
 void	initialize_fractal(t_program *data, \
-							t_fractal_name name, \
-							t_complex c)
+							t_fractal_name name)
 {
-	if (name == MANDELBROT)
+	if (data->args.mandelbrot == true)
 		initialize_mandelbrot(data, &data->fractals->front);
-	else if (name == JULIA)
-		initialize_julia(data, &data->fractals->front, c);
+	else if (data->args.julia == true)
+		initialize_julia(data, &data->fractals->front);
 }
 
 static void	initialize_mandelbrot(t_program *data, \
@@ -38,8 +36,9 @@ static void	initialize_mandelbrot(t_program *data, \
 	window = &data->window;
 	viewport = &(*fractal)->viewport;
 	(*fractal)->name = MANDELBROT;
-	set_pixel_size(viewport, 0.0024);
-	set_viewport_centers(viewport, -1.4, 0);
+	data->equation = (t_fractal_eq)mandelbrot_de;
+	set_pixel_size(viewport, 0.0025);
+	set_viewport_centers(viewport, -0.85, 0.);
 	set_viewport_size(viewport, \
 						window->settings.width, \
 							window->settings.height);
@@ -47,8 +46,7 @@ static void	initialize_mandelbrot(t_program *data, \
 }
 
 static void	initialize_julia(t_program *data, \
-							t_fractal_node **fractal, \
-								t_complex c)
+							t_fractal_node **fractal)
 {
 	t_viewport	*viewport;
 	t_window	*window;
@@ -57,9 +55,10 @@ static void	initialize_julia(t_program *data, \
 	window = &data->window;
 	viewport = &(*fractal)->viewport;
 	(*fractal)->name = JULIA;
-	(*fractal)->viewport.data.c = c;
-	set_pixel_size(viewport, 0.0024);
-	set_viewport_centers(viewport, 0, 0);
+	(*fractal)->viewport.data.constant = data->args.var;
+	data->equation = (t_fractal_eq)julia_de;
+	set_pixel_size(viewport, 0.0032);
+	set_viewport_centers(viewport, 0.0, 0.0);
 	set_viewport_size(viewport, \
 						window->settings.width, \
 							window->settings.height);
