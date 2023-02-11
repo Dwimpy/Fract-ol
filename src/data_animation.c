@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:30:48 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/09 20:04:20 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 14:37:34 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	animate(t_program *data)
 
 	vp = &data->fractals->front->viewport;
 	j = -1;
+	data->k = fabs(sin((mlx_get_time()) * 0.5f)) * 3.;
 	while (++j < vp->size.height)
 	{
 		i = -1;
 		while (++i < vp->size.width)
 		{
-			data->pixel_map[j * vp->size.width + i].k = \
-				fabs(sin((mlx_get_time()) * 0.5f)) * 3.;
+
 			mlx_put_pixel(data->fractals->front->image, i, j, \
-			put_pixel_color(&data->pixel_map[j * vp->size.width + i]));
+			put_pixel_color(&data->pixel_map[j * vp->size.width + i], data->k));
 		}
 	}
 }

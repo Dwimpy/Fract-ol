@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 02:13:28 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/09 20:12:43 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 14:24:06 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,8 @@ void	key_hooks(mlx_key_data_t keydata, t_program *data)
 
 void	resize_hooks(int32_t new_width, int32_t new_height, t_program *data)
 {
-	t_screen_left	screen_left;
-	t_corners		corners;
 
-	screen_left = data->window.screen_coords;
-	corners = data->window.corners;
 	resize_window(&data->window, new_width, new_height);
-	set_corners(&data->window, data->renderer.mlx, &mlx_get_window_pos);
 	mlx_resize_image(data->fractals->front->image, \
 						data->window.settings.width, \
 							data->window.settings.height);

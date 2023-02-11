@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:43:25 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/05 19:06:44 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 14:45:20 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ t_rgb	hsv_to_rgb(t_hsv hsv)
 			hsv.h /= 60;
 		params.sextant = floorf(hsv.h);
 		params.fract = hsv.h - params.sextant;
-		params.p = hsv.v*(1 - hsv.s);
-		params.q = hsv.v*(1 - (hsv.s * params.fract));
-		params.t = hsv.v*(1 - (hsv.s *(1 - params.fract)));
+		params.p = hsv.v * (1 - hsv.s);
+		params.q = hsv.v * (1 - (hsv.s * params.fract));
+		params.t = hsv.v * (1 - (hsv.s *(1 - params.fract)));
 	}
 	handle_rgb_region(&rgb, hsv, params);
 	return (rgb);

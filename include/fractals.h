@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/09 20:14:06 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 15:01:14 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_iteration
 
 typedef struct s_pixel_data
 {
-	double		k;
 	double		potential;
 	double		distance;
 	t_iteration	iteration;

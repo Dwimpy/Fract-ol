@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:37:18 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/06 22:26:02 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/11 14:24:17 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	move_down(t_program *data);
 
 void	handle_movement(t_program *data)
 {
-	if (data->controller_flag * 0x0)
+	if (data->controller_flag & 0x0)
 		return ;
 	if (data->controller_flag & RIGHT)
 		move_right(data);
