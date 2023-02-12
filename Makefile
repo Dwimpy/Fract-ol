@@ -6,7 +6,7 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 14:38:01 by arobu             #+#    #+#              #
-#    Updated: 2023/02/12 02:55:14 by arobu            ###   ########.fr        #
+#    Updated: 2023/02/12 17:57:13 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,10 @@ MAIN_FILE		= main.c
 # Compiler
 
 CC			= cc -Wall -Werror -Wextra
-#CFLAGS		= -Ofast -march=nocona -flto  #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
-CFLAGS		= -Ofast -march=native -flto #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
-#LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ~/.brew/opt/glfw/lib/ -lglfw -lm
-LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/ -ldl -lglfw -pthread
+CFLAGS		= -Ofast -march=nocona -flto  #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
+#CFLAGS		= -Ofast -march=native -flto #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
+LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ./glfw/3.3.8/lib -lglfw -lm
+#LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/ -ldl -lglfw -pthread
 #Archive and Remove
 
 RM			= rm -f
@@ -48,7 +48,7 @@ WHITE = \033[0;97m
 SRCS	=	$(wildcard $(SRC_DIR)/*.c)
 OBJS	= 	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-all:	libft	$(NAME)
+all:	libft	mlx	$(NAME)
 
 $(NAME): $(OBJS) | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDE)  $(OBJS) $(MAIN_FILE) -o $@ -lm $(LDLFLAGS)
@@ -60,6 +60,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+
+mlx:
+			@make -C ./MLX42
 
 libft:
 			@make all -C $(LIBFT_FOLDER) -s
@@ -84,4 +87,4 @@ bonus:	libft	$(NAME)
 norm:
 			@norminette $(SRC_DIR) $(NORM_INCLUDE) | grep -v OK
 		
-.PHONY:		all relibft libft clean fclean re norm
+.PHONY:		all mlx relibft libft clean fclean re norm

@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:28:14 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/12 16:21:54 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 18:30:11 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_pixel_data	*julia_de(double pixel_size, \
 					t_complex *c, \
 					t_complex *z,
 					t_pixel_data *pixel_map)
-{
+{	
 	double		mag_sq;
 	t_complex	dz;
 	t_complex	dc;
