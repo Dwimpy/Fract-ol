@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:40:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/12 03:55:26 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 22:11:28 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_arg_opts
 {
 	bool		mandelbrot;
 	bool		julia;
-	bool		burning_ship;
+	bool		tricorn;
 	bool		is_animated;
 	t_rgb		color;
 	t_complex	var;

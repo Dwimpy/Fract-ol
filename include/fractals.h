@@ -6,14 +6,14 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/12 17:57:59 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 22:28:05 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTALS_H
 # define FRACTALS_H
-# define MAX_DEPTH 200
-# define THICKNESS 0.0007
+# define MAX_DEPTH 150
+# define THICKNESS 0.005
 # define RADIUS 10000
 # include <stdbool.h>
 # include "viewport.h"
@@ -33,7 +33,8 @@ typedef struct s_fractal_node	t_fractal_node;
 typedef enum e_fractal_name
 {
 	MANDELBROT,
-	JULIA
+	JULIA,
+	TRICORN
 }				t_fractal_name;
 
 typedef enum e_fractal_zone
@@ -87,6 +88,10 @@ t_pixel_data	*mandelbrot_de(double pixel_size, \
 					t_complex *c,
 					t_pixel_data *pixel_map);
 t_pixel_data	*julia_de(double pixel_size, \
+					t_complex *c, \
+					t_complex *z,
+					t_pixel_data *pixel_map);
+t_pixel_data	*tricorn_de(double pixel_size, \
 					t_complex *z, \
 					t_complex *c,
 					t_pixel_data *pixel_map);

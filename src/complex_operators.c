@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 19:38:33 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 19:01:56 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 21:57:03 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ double	mag_squared(double real, double imag)
 	return (real * real + imag * imag);
 }
 
-t_complex	conjugate(double real, double imag)
+void	conjugate(t_complex *z, double real, double imag)
 {
-	t_complex	result;
-
-	result.real = real;
-	result.imag = (-1) * imag;
-	return (result);
+	z->real = real;
+	z->imag = (-1) * imag;
 }
 
 void	square(t_complex *z)
@@ -42,7 +39,7 @@ t_complex	inverse(double real, double imag)
 	t_complex	z_cc;
 	double		norm_squared;
 
-	z_cc = conjugate(real, imag);
+	conjugate(&z_cc, real, imag);
 	norm_squared = mag_squared(real, imag);
 	result.real = z_cc.real / norm_squared;
 	result.imag = z_cc.imag / norm_squared;

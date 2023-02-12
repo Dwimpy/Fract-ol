@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:18:12 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 19:02:15 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 21:56:50 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	division(t_complex *z1, double real, double imag)
 	double		norm_squared;
 	t_complex	z_cc;
 
-	z_cc = conjugate(real, imag);
+	conjugate(&z_cc, real, imag);
 	norm_squared = mag_squared(z_cc.real, z_cc.imag);
 	multiply(z1, z_cc.real, z_cc.imag);
 	print_complex_operation(z_cc, "Conjugate");
