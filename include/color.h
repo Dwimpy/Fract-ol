@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:41:38 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 21:27:40 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 01:00:11 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COLOR_H
 # include <stdlib.h>
 # include <math.h>
+# include <stdint.h>
 
 typedef struct s_rgb
 {

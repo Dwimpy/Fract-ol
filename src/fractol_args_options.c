@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_args_options.c                                :+:      :+:    :+:   */
+/*   fractol_args_options.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 18:45:16 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 23:00:59 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 01:37:08 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ void	change_options_color(t_arg_opts *args, \
 	args->color.r = r;
 	args->color.g = g;
 	args->color.b = b;
-}
-
-void	change_options_animation(t_arg_opts *args, bool is_animated)
-{
-	args->is_animated = is_animated;
 }
 
 char	*get_arg_string(char **argv)
@@ -47,16 +42,20 @@ char	*get_arg_string(char **argv)
 	return (arg_str);
 }
 
-char	*get_color_args(char **argv, t_arg_opts *args)
+void	get_color_args(char **argv, t_arg_opts *args)
 {
 	char			*arg_str;
 	char			*color_args;
-	int				value;
 
 	arg_str = get_arg_string(argv);
 	color_args = ft_strnstr(arg_str, "-c", ft_strlen(arg_str));
 	if (color_args != NULL)
 	{
+		if (*(color_args - 1) != ' ' || *(color_args + 2) != ' ')
+		{
+			fractol_usage("Invalid option\n");
+			exit(EXIT_FAILURE);
+		}
 		args->color.r = get_channel_color(color_args, "red=", 4);
 		args->color.g = get_channel_color(color_args, "green=", 6);
 		args->color.b = get_channel_color(color_args, "blue=", 5);

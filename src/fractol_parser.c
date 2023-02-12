@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 16:44:01 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 22:42:40 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 01:06:10 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,8 @@ void	fractol_usage(char *err_msg)
 	ft_putstr_fd("\033[0;94mExample:\033[0;39m  ./fractol Julia \
 -c red=255 green=255 blue=255\n", 2);
 	ft_putstr_fd("\033[0;91mCaution: \033[0;39m\n", 2);
-	ft_putstr_fd("1: \033[0;94mNon-numeric inputs will \
-result in setting the specific channel to 0\033[0;39m \n", 2);
-	ft_putstr_fd("2: \033[0;94mIncorrect format will \
-result in setting the specific channel to 0\033[0;39m \n", 2);
 	ft_putstr_fd("3: \033[0;94mNot specifying the \
 channel will have no effect\033[0;39m \n", 2);
-	ft_putstr_fd("4: \033[0;94mNegative values and values greater than \
-255 will set the channel to 255\033[0;39m \n", 2);
 	exit(0);
 }
 

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_init_args.c                                   :+:      :+:    :+:   */
+/*   compute_args.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 15:44:33 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/12 04:39:05 by arobu            ###   ########.fr       */
+/*   Created: 2023/02/12 16:17:31 by arobu             #+#    #+#             */
+/*   Updated: 2023/02/12 16:20:56 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/data.h"
+#ifndef COMPUTE_ARGS_H
+# define COMPUTE_ARGS_H
+# include "complex.h"
 
-void	init_args(t_arg_opts *args)
+typedef struct s_compute_args
 {
-	args->mandelbrot = false;
-	args->julia = false;
-	args->burning_ship = false;
-	args->is_animated = true;
-	args->color = (t_rgb){255, 255, 255};
-	set_complex(&args->var, -0.73, 0.18);
-}
+	int			check;
+	double		mag_sq;
+	t_complex	dz;
+	t_complex	dc;
+	t_complex	saved_z;
+}				t_compute_args;
+
+#endif

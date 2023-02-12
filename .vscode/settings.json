@@ -48,7 +48,8 @@
 		"__memory": "c",
 		"optional": "c",
 		"sstream": "c",
-		"atomic": "c"
+		"atomic": "c",
+		"cmath": "c"
 	},
 	"codam-norminette-3.highlight-color": "rgba(186,87,255,0.15)"
 }

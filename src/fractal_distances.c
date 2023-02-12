@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:05:50 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 17:40:03 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 16:23:08 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,24 @@ t_pixel_data	*on_boundary(t_pixel_data *data, uint32_t iteration)
 	data->iteration.iteration = iteration;
 	data->iteration.zone = BOUNDARY;
 	return (data);
+}
+
+int	periodicty_checking(t_complex z, t_complex saved, \
+					int *check, double pixel_size)
+{
+	if (*check == 1)
+	{
+		if (mangnitude(z.real - saved.real, z.imag - saved.imag) < \
+			pixel_size)
+			return (1);
+	}
+	else
+		*check = 0;
+	return (0);
+}
+
+void	save_z(t_complex *saved_z, double real, double imag, int *check)
+{
+	set_complex(saved_z, real, imag);
+	*check = 1;
 }

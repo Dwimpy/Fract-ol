@@ -6,15 +6,15 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 19:04:29 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 16:11:59 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTALS_H
 # define FRACTALS_H
-# define MAX_DEPTH 100
-# define THICKNESS 0.008
-# define RADIUS 10000
+# define MAX_DEPTH 250
+# define THICKNESS 0.005
+# define RADIUS 1000
 # include <stdbool.h>
 # include "viewport.h"
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -90,6 +90,15 @@ t_pixel_data	*julia_de(double pixel_size, \
 					t_complex *z, \
 					t_complex *c,
 					t_pixel_data *pixel_map);
+int				bulb_checking(t_pixel_data *data, t_complex c);
+int				periodicty_checking(t_complex z, t_complex saved, \
+								int *check, double pixel_size);
+void			initialize_values(t_complex *dc, \
+							t_complex *dz, double pixel_size);
+void			init_map_period(t_pixel_data *pixel_map, \
+							t_complex *saved_dz, int *check);
+void			save_z(t_complex *saved_z, double real, \
+						double imag, int *check);
 t_pixel_data	*distance(t_pixel_data *data, double z_mag_sq, t_complex dz);
 t_pixel_data	*on_boundary(t_pixel_data *data, uint32_t iteration);
 void			destroy_stack(t_fractals **fractals, mlx_t *mlx);

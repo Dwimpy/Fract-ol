@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:40:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 22:42:51 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/12 03:55:26 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void			key_hooks(mlx_key_data_t keydata, t_program *data);
 void			init_args(t_arg_opts *args);
 void			fractol_usage(char *err_msg);
 char			*get_arg_string(char **argv);
-char			*get_color_args(char **argv, t_arg_opts *args);
+void			get_color_args(char **argv, t_arg_opts *args);
 void			resize_hooks(int32_t new_width, int32_t new_height, \
 							t_program *data);
 void			movement_hook(t_program *data);
@@ -72,8 +72,7 @@ void			render_translation(t_program *data, \
 							int32_t offset, t_dir direction);
 void			handle_keys(t_program *data, action_t action, int key);
 void			zoom(t_program *data, double ydelta, double scale);
-void			initialize_fractal(t_program *data, \
-									t_fractal_name name);
+void			initialize_fractal(t_program *data);
 void			create_fractal_image(t_renderer *renderer, \
 							t_fractal_node **fractal, \
 							bool (*has_image)(t_fractal_node *fractal));
