@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 18:45:16 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/12 01:37:08 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/13 01:15:33 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../include/data.h"
 
 static int	get_channel_color(char *str, char *channel, size_t len);
+static void	check_julia_args(char *str);
 
 void	change_options_color(t_arg_opts *args, \
 							uint32_t r, uint32_t g, uint32_t b)
@@ -93,10 +94,54 @@ Must be a number between 0 and 255\n");
 	return (color);
 }
 
-void	parse_arg_options(t_arg_opts *args)
+void	parse_arg_options(char **argv, t_arg_opts *args)
 {
-	if (args->mandelbrot == true)
-	{
+	int	i;
 
+	i = 0;
+
+	if (args->julia == 1)
+	{
+		check_julia_args(argv[2]);
+		check_julia_args(argv[3]);
+		set_complex(&args->var, ft_atof(argv[2]), ft_atof(argv[3]));
 	}
+	get_color_args(argv, args);
+	while (argv[i] != NULL)
+	{
+		if (ft_strncmp(argv[i], "-na", 3) == 0)
+			args->is_animated = 0;
+		i++;
+	}
+}
+
+void	check_julia_args(char *str)
+{
+	size_t	len;
+	size_t	i;
+	int		has_digits;
+
+	has_digits = 0;
+	i = 0;
+	if (str != NULL && *str != '\0')
+	{
+		len = ft_strlen(str);
+		while (len-- > 0)
+		{
+			if (ft_isdigit(str[i]))
+				has_digits = 1;
+			if (!ft_isdigit(str[i]) && str[i] != '.' && str[i] != '-')
+			{
+				fractol_usage("Invalid julia argument.\n");
+				exit(EXIT_FAILURE);
+			}
+			i++;
+		}
+	}
+	if (has_digits == 0)
+	{
+		fractol_usage("Invalid julia argument.\n");
+		exit(EXIT_FAILURE);
+	}
+	return ;
 }

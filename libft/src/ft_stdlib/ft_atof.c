@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:24:00 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/07 18:36:13 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/13 01:15:19 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,16 @@ double	ft_atof(const char *str)
 		str++;
 	}
 	e += i * e_sign;
-	while (e-- > 0)
+	while (e > 0)
+	{
 		result *= 10.0;
-	while (++e < 0)
+		e--;
+	}
+	while (e < 0)
+	{
 		result *= 0.1;
+		e++;
+	}
 	return (result * (double)res_sign);
 }
 
@@ -66,7 +72,7 @@ static void	treat_dot(const char **str, int *e, int *res_sign, double *result)
 		while (**str && ft_isdigit(**str))
 		{
 			*result = *result * 10.0 + (**str - '0');
-			e -= 1;
+			*e -= 1;
 			(*str)++;
 		}
 	}

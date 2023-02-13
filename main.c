@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	init_args(&args);
 	arg_checker(argc, argv, &args);
-	get_color_args(argv, &args);
+	parse_arg_options(argv, &args);
 	fractol(&args);
 	return (EXIT_SUCCESS);
 }
