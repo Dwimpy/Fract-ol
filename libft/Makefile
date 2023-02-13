@@ -6,7 +6,7 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 01:17:05 by arobu             #+#    #+#              #
-#    Updated: 2023/01/22 19:33:24 by arobu            ###   ########.fr        #
+#    Updated: 2023/02/13 22:45:21 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,11 +48,32 @@ WHITE = \033[0;97m
 
 #Sources
 
-STDLIB_SRCS	=	$(wildcard $(FT_STDLIB_SDIR)/*.c)
-STDLIB_OBJS	= 	$(patsubst $(FT_STDLIB_SDIR)/%.c, $(FT_STDLIB_OBJ)/%.o, $(STDLIB_SRCS))
+STDLIB_SRCS	=	ft_abs_double.c ft_atof.c ft_atoi.c ft_bzero.c  \
+				ft_calloc.c ft_concat.c ft_contains.c ft_isalnum.c  \
+				ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c  \
+				ft_isspace3.c ft_itoa.c ft_itoa_pbase.c ft_itoa_ubase.c  \
+				ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c  \
+				ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c  \
+				ft_lstsize.c ft_memchr.c ft_memcmp.c ft_memcpy.c  \
+				ft_memmove.c ft_memset.c ft_min.c ft_putchar_fd.c  \
+				ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c  \
+				ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c  \
+				ft_strjoin_four.c ft_strjoin_three.c ft_strlcat.c ft_strlcpy.c  \
+				ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnew_zeros.c  \
+				ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c  \
+				ft_tolower.c ft_toupper.c ft_uitoa.c 
+STDLIB_OBJS	= 	$(patsubst %.c, $(FT_STDLIB_OBJ)/%.o, $(STDLIB_SRCS))
 
-PRINTF_SRCS	=	$(wildcard $(FT_PRINTF_SDIR)/*.c)
-PRINTF_OBJS	= 	$(patsubst $(FT_PRINTF_SDIR)/%.c, $(FT_PRINTF_OBJ)/%.o, $(PRINTF_SRCS))
+PRINTF_SRCS	=	ft_add_width_c.c ft_count_digits.c ft_create_precision.c ft_create_string.c  \
+				ft_create_string_di.c ft_create_string_p.c ft_create_string_percent.c ft_create_string_s.c  \
+				ft_create_string_u.c ft_create_string_x.c ft_create_width.c ft_get_flags.c  \
+				ft_get_precision.c ft_get_specifier.c ft_get_width.c ft_handle_options.c  \
+				ft_handle_specifier.c ft_handle_specifier_di.c ft_handle_specifier_p.c ft_handle_specifier_percent.c  \
+				ft_handle_specifier_s.c ft_handle_specifier_u.c ft_handle_specifier_x.c ft_init_field.c  \
+				ft_printf.c ft_strdup_spec_s.c ft_strnew.c ft_validate_specifier_di.c  \
+				ft_validate_specifier_p.c ft_validate_specifier_percent.c ft_validate_specifier_s.c ft_validate_specifier_u.c  \
+				ft_validate_specifier_x.c
+PRINTF_OBJS	= 	$(patsubst %.c, $(FT_PRINTF_OBJ)/%.o, $(PRINTF_SRCS))
 
 
 all: libft printf $(NAME)
