@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 16:44:01 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/12 22:13:11 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/13 17:31:25 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	fractol_usage(char *err_msg)
 	ft_putstr_fd("\033[0;94mAvailable Fractals:\033[0;39m\n", 2);
 	ft_putstr_fd("\
 1: [ \033[0;93mMandelbrot\033[0;39m ]\n\
-2: [ \033[0;93mJulia\033[0;39m ]\n\
+2: [ \033[0;93mJulia\033[0;39m ] [ \033[0;93mPoint (Re(c) Im(c))\033[0;39m ]\n\
 3: [ \033[0;93mTricorn\033[0;39m ]\n", 2);
 	ft_putstr_fd("\033[0;94mAdditional Options:\033[0;39m \n", 2);
 	ft_putstr_fd("[ \033[0;93m-na\033[0;39m ] - Disable Animations\n", 2);

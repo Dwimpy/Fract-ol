@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:24:00 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/13 01:15:19 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/13 20:40:19 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void	treat_dot(const char **str, int *e, \
 					int *res_sign, double *result);
 static void	treat_exp_not(const char **str, int *sign);
+static void	do_calculation(int *e, double *result);
 
 double	ft_atof(const char *str)
 {
@@ -37,17 +38,22 @@ double	ft_atof(const char *str)
 		str++;
 	}
 	e += i * e_sign;
-	while (e > 0)
-	{
-		result *= 10.0;
-		e--;
-	}
-	while (e < 0)
-	{
-		result *= 0.1;
-		e++;
-	}
+	do_calculation(&e, &result);
 	return (result * (double)res_sign);
+}
+
+static void	do_calculation(int *e, double *result)
+{
+	while (*e > 0)
+	{
+		*result *= 10.0;
+		(*e)--;
+	}
+	while (*e < 0)
+	{
+		*result *= 0.1;
+		(*e)++;
+	}
 }
 
 static void	treat_dot(const char **str, int *e, int *res_sign, double *result)

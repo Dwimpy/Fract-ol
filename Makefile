@@ -6,7 +6,7 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 14:38:01 by arobu             #+#    #+#              #
-#    Updated: 2023/02/13 16:24:17 by arobu            ###   ########.fr        #
+#    Updated: 2023/02/13 21:45:45 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,22 @@
 
 NAME			= fractol
 INCLUDE			= -I include/
+DSYM			= ./fractol.dSYM
 SRC_DIR			= ./src
 OBJ_DIR			= ./obj
 LIBFT_FOLDER	= ./libft
 LIBFT_LIB		= ./libft/libft.a
-NORM_INCLUDE	= ./include
 MAIN_FILE		= main.c
+NORM_INCLUDE	= ./include
+RESULTS			:=  $(shell ./norm)
 # Compiler
 
 CC			= cc -Wall -Werror -Wextra
-#CFLAGS		= -Ofast -march=nocona -flto  #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
-CFLAGS		= -Ofast -march=native -flto -fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
-LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ./glfw/3.3.8/lib -lglfw -lm
+CFLAGS		= -Ofast -march=nocona -flto
+ASAN		= #-fsanitize=address -g3
+#CFLAGS		= -Ofast -march=native -flto #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
+FRAMEWORK	= -framework Cocoa -framework OpenGL -framework IOKit
+LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ./glfw-3.3.8/lib-x86_64 -lglfw3 -lm
 #LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/ -ldl -lglfw -pthread
 #Archive and Remove
 
@@ -48,11 +52,11 @@ WHITE = \033[0;97m
 SRCS	=	$(wildcard $(SRC_DIR)/*.c)
 OBJS	= 	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-all:	libft	mlx	$(NAME)
+all:	mlx	libft	$(NAME)
 
 $(NAME): $(OBJS) | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDE)  $(OBJS) $(MAIN_FILE) -o $@ -lm $(LDLFLAGS)
-	@echo "$(YELLOW)Fractol$(DEF_COLOR) $(CYAN)built successfully.$(DEF_COLOR)"
+	@$(CC) $(INCLUDE) $(FRAMEWORK) $(ASAN) $(OBJS) $(MAIN_FILE) -o $@ -lm $(LDLFLAGS) 
+	@echo "$(YELLOW)Fractol$(DEF_COLOR) $(CYAN)done.$(DEF_COLOR)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@ echo "$(MAGENTA)Compiling:$(DEF_COLOR) $<."
@@ -74,6 +78,7 @@ libft:
 
 fclean:		clean
 			@make fclean -C $(LIBFT_FOLDER)
+			@make fclean -C ./MLX42
 			@$(RM) -f $(NAME)
 			@echo "$(YELLOW)All$(DEF_COLOR) $(CYAN)objects successfully cleaned!$(DEF_COLOR)"
 
@@ -82,9 +87,6 @@ re:			fclean all
 relibft:
 			@make re -C $(LIBFT_FOLDER)
 
-bonus:	libft	$(NAME)
+bonus:	libft	mlx	$(NAME)
 
-norm:
-			@norminette $(SRC_DIR) $(NORM_INCLUDE) | grep -v OK
-		
 .PHONY:		all mlx relibft libft clean fclean re norm

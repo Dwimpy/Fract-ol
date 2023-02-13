@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:40:52 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/12 22:11:28 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/13 17:36:13 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_arg_opts
 	bool		is_animated;
 	t_rgb		color;
 	t_complex	var;
+	bool		is_redrawing;
 }				t_arg_opts;
 
 typedef struct s_program
@@ -58,6 +59,8 @@ typedef struct s_program
 
 void			key_hooks(mlx_key_data_t keydata, t_program *data);
 void			init_args(t_arg_opts *args);
+void			check_julia_args(char *str);
+void			swap_fractal(t_program *data, action_t action, int key);
 void			fractol_usage(char *err_msg);
 char			*get_arg_string(char **argv);
 void			get_color_args(char **argv, t_arg_opts *args);
@@ -66,6 +69,7 @@ void			resize_hooks(int32_t new_width, int32_t new_height, \
 void			movement_hook(t_program *data);
 void			handle_movement(t_program *data);
 void			scroll_hook(double xdelta, double ydelta, t_program *data);
+void			redraw_julia(t_program *data);
 void			translate_viewport(t_program *data, \
 							int32_t offset, t_dir direction);
 void			render_translation(t_program *data, \
