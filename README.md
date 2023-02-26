@@ -33,10 +33,11 @@ install cmake and build MLX42 and GLFW.
 ```bash
   cd ./MLX42/ && cmake -B build && cmake --build build -j4 && cd ..
 ```
-#### Change LDLFLAGS and CFLAGS and compile Fract'ol
+#### Change LDLFLAGS and CFLAGS and compile Fract'ol and comment out the FRAMEWORK
 ```bash
   LDLFLAGS = -lft -L ./libft/ -lmlx42 -L ./MLX42/build -ldl -lglfw -pthread
-  CFLAGS = -Ofast -march=native -flto 
+  CFLAGS = -Ofast -march=native -flto
+  FRAMEWORK = #-framework Cocoa -framework OpenGL -framework IOKit
   make
 ```
 
