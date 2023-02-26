@@ -22,14 +22,14 @@ if [ -z `which cmake` ]; then
 fi
 
 if [ ! -d GLFW_LIBRARY ]; then
-	echo "GLFW not found, installing..."
+	echo "GLFW not found, building..."
 	cd ./glfw && cmake -B build && cmake --build build -j4 && cd ..
 	else
 	echo "GLFW installed. Creating MLX42..."
 fi
 
 if [ ! -d MLX42_LIBRARY ]; then
-	echo "MLX42 not found, installing..."
+	echo "MLX42 not found, building..."
 	cd ./MLX42 && cmake -B build && cmake --build build -j4 && cd ..
 	else
 	echo "MLX42 found. Making fractol..."
