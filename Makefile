@@ -6,7 +6,7 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 14:38:01 by arobu             #+#    #+#              #
-#    Updated: 2023/02/13 22:41:33 by arobu            ###   ########.fr        #
+#    Updated: 2023/02/26 15:02:22 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 mlx:
-			@make -C ./MLX42
+			@make -C ./MLX42 -I
 
 libft:
 			@make all -C $(LIBFT_FOLDER) -s
