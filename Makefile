@@ -6,7 +6,7 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 14:38:01 by arobu             #+#    #+#              #
-#    Updated: 2023/02/26 15:02:22 by arobu            ###   ########.fr        #
+#    Updated: 2023/02/26 16:07:50 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ OBJ_DIR			= ./obj
 LIBFT_FOLDER	= ./libft
 LIBFT_LIB		= ./libft/libft.a
 MAIN_FILE		= main.c
+MLX_BUILD		= ./MLX42/build
+GLFW_BUILD		= ./glfw/build
 NORM_INCLUDE	= ./include
 
 # Compiler
@@ -27,7 +29,7 @@ CFLAGS		= -Ofast -march=nocona -flto
 ASAN		= #-fsanitize=address -g3
 #CFLAGS		= -Ofast -march=native -flto #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
 FRAMEWORK	= -framework Cocoa -framework OpenGL -framework IOKit
-LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/  -L ./glfw-3.3.8/lib-x86_64 -lglfw3 -lm
+LDLFLAGS	= -lft -L ./libft/  -lmlx42 -L ./MLX42/build -L ./glfw/build/src/ -lglfw3 -lm
 #LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/ -ldl -lglfw -pthread
 
 #Archive and Remove
@@ -58,7 +60,7 @@ SRCS	=	color_utils.c complex_number_set.c complex_operations.c complex_operators
 OBJS	= 	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Rules
-all:	mlx	libft	$(NAME)
+all:	deps	libft	$(NAME)
 
 $(NAME): $(OBJS) | $(OBJ_DIR)
 	@$(CC) $(INCLUDE) $(FRAMEWORK) $(ASAN) $(OBJS) $(MAIN_FILE) -o $@ -lm $(LDLFLAGS) 
@@ -71,8 +73,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-mlx:
-			@make -C ./MLX42 -I
+deps:
+	@chmod +x ./install_dependencies.sh
+	@echo "$(YELLOW)Installing dependencies..$(DEF_COLOR)"
+	@./install_dependencies.sh
 
 libft:
 			@make all -C $(LIBFT_FOLDER) -s
@@ -84,7 +88,8 @@ libft:
 
 fclean:		clean
 			@make fclean -C $(LIBFT_FOLDER)
-			@make fclean -C ./MLX42
+			@rm -rdf $(GLFW_BUILD)
+			@rm -rdf $(MLX_BUILD)
 			@$(RM) -f $(NAME)
 			@echo "$(YELLOW)All$(DEF_COLOR) $(CYAN)objects successfully cleaned!$(DEF_COLOR)"
 
