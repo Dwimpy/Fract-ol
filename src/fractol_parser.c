@@ -6,12 +6,12 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 16:44:01 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/13 17:31:25 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/27 14:54:18 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/ft_printf.h"
-#include "../include/data.h"
+#include "ft_printf.h"
+#include "data.h"
 
 static char	*str_toupper(char **str);
 static int	is_valid_args(char **argv, t_arg_opts *args);

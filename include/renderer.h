@@ -6,14 +6,14 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:28:32 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 18:16:31 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/27 14:53:27 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERER_H
 # define RENDERER_H
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/include/libft.h"
+# include "MLX42.h"
+# include "libft.h"
 # include "window.h"
 # include "fractals.h"
 # include "color.h"

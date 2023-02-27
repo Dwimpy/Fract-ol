@@ -6,21 +6,23 @@
 #    By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 14:38:01 by arobu             #+#    #+#              #
-#    Updated: 2023/02/26 17:38:33 by arobu            ###   ########.fr        #
+#    Updated: 2023/02/27 14:56:39 by arobu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 NAME			= fractol
-INCLUDE			= -I include/
+INCLUDE			= -I ./include/ -I ./libft-printf/include/ -I ./MLX42/include/MLX42/
 DSYM			= ./fractol.dSYM
 SRC_DIR			= ./src
 OBJ_DIR			= ./obj
-LIBFT_FOLDER	= ./libft
-LIBFT_LIB		= ./libft/libft.a
+LIBFT_FOLDER	= ./libft-printf
+LIBFT_LIB		= ./libft-printf/libft.a
 MAIN_FILE		= main.c
-MLX_BUILD		= ./MLX42/build
+MLX_LIB			= ./MLX42/build
+GLFW_LIB		= ./glfw/build/src
 GLFW_BUILD		= ./glfw/build
+MLX_BUILD		= ./MLX42/build
 NORM_INCLUDE	= ./include
 
 # Compiler
@@ -29,7 +31,7 @@ CFLAGS		= -Ofast -march=nocona -flto
 ASAN		= #-fsanitize=address -g3
 #CFLAGS		= -Ofast -march=native -flto #-fsanitize=address -g3 #-g3 -Wall -Werror -Wextra -g3 #
 FRAMEWORK	= -framework Cocoa -framework OpenGL -framework IOKit
-LDLFLAGS	= -lft -L ./libft/  -lmlx42 -L ./MLX42/build -L ./glfw/build/src/ -lglfw3 -lm
+LDLFLAGS	= -lft -L $(LIBFT_FOLDER)  -lmlx42 -L $(MLX_LIB) -L $(GLFW_LIB) -lglfw3 -lm
 #LDLFLAGS	= -lft -L ./libft/ -lmlx42 -L ./MLX42/build -ldl -lglfw -pthread
 
 #Archive and Remove
@@ -68,7 +70,7 @@ $(NAME): $(OBJS) | $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@ echo "$(MAGENTA)Compiling:$(DEF_COLOR) $<."
-	@ $(CC) $(CFLAGS) -c $< -o $@ 
+	@ $(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@ 
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)

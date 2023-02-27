@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 17:05:36 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 18:59:58 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/27 14:54:47 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define W_TITLE "Fract-ol"
 # define W_RESIZEABLE 1
 
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "MLX42.h"
 
 typedef enum e_orientation
 {

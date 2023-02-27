@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:05:37 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/12 21:55:01 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/27 14:40:20 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define COMPLEX_H
 
 # include <math.h>
-# include "../libft/include/ft_printf.h"
+# include "ft_printf.h"
 # include "stdio.h"
 # define LOG_2_DIV 0.30102999566398119521373889472449
 

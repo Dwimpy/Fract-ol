@@ -6,15 +6,15 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:17:40 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/11 16:10:33 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/27 14:54:38 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VIEWPORT_H
 # define VIEWPORT_H
 
-# include "../include/complex.h"
-# include "../include/window.h"
+# include "complex.h"
+# include "window.h"
 
 typedef struct s_centers
 {

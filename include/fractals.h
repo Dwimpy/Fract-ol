@@ -6,7 +6,7 @@
 /*   By: arobu <arobu@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:13 by arobu             #+#    #+#             */
-/*   Updated: 2023/02/13 19:04:01 by arobu            ###   ########.fr       */
+/*   Updated: 2023/02/27 14:54:29 by arobu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define RADIUS 10000
 # include <stdbool.h>
 # include "viewport.h"
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "MLX42.h"
 
 /*
 ######################################
